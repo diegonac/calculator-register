@@ -15,7 +15,7 @@ const Details: React.FC<DetailsProps> = ({ sums, removeSum, total }) => {
             <div className="container-details">
                 <h2>Detalle</h2>
                 { sums.length > 0 && sums.map((sum, index) => <div key={index}> <Items sum={sum} removeSum={removeSum} /> </div>) }
-                <h2>Total: { total() }</h2>
+                <h2>Total: ${ total() }</h2>
             </div>
         )
     }
