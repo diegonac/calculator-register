@@ -1,24 +1,26 @@
 import React, { ChangeEvent, Dispatch, SetStateAction } from 'react';
 import "../assets/dropdown.css";
+import { showDropdownMsg } from '../utils/dataUtils';
+import { dropdownOptions } from '../models/sums.models';
 
 interface DropdownProps {
-    selectedProduct: string,
-    setSelectedProduct: Dispatch<SetStateAction<string>>,
+    selectedOption: string,
+    setSelectedOption: Dispatch<SetStateAction<string>>,
+    option: dropdownOptions,
 }
 
-const Dropdown: React.FC<DropdownProps> = ({ selectedProduct, setSelectedProduct }) => {
+const Dropdown: React.FC<DropdownProps> = ({ selectedOption, setSelectedOption, option }) => {
 
     const handleOptionChange = (event: ChangeEvent<HTMLSelectElement>) => {
-        setSelectedProduct(event.target.value);
+        setSelectedOption(event.target.value);
     };
 
     return (
         <div className='contain-dropdown'>
-            <select value={selectedProduct} onChange={handleOptionChange}>
-                <option value="">Selecciona un producto</option>
-                <option value="Remera">Remera</option>
-                <option value="Pantalón">Pantalón</option>
-                <option value="Zapato">Zapato</option>
+            <span>{ showDropdownMsg(option.name) }</span>
+            <select value={selectedOption} onChange={handleOptionChange}>
+                <option value="">Selecciona una opción</option>
+                { option.list.map((item, index) => <option key={index} value={ item }>{ item }</option>) }
             </select>
         </div>
     );

@@ -6,14 +6,16 @@ import "../assets/details.css";
 interface DetailsProps extends Sums {
     removeSum: SumsHooks["removeSum"],
     total: SumsHooks["total"],
+    saleCondition: string,
 }
 
-const Details: React.FC<DetailsProps> = ({ sums, removeSum, total }) => {
+const Details: React.FC<DetailsProps> = ({ sums, removeSum, total, saleCondition }) => {
     
     if(sums.length > 0) {
         return (
             <div className="container-details">
                 <h2>Detalle</h2>
+                <p>Condición de la venta: { saleCondition.toLowerCase() }</p>
                 { sums.length > 0 && sums.map((sum, index) => <div key={index}> <Items sum={sum} removeSum={removeSum} /> </div>) }
                 <h2>Total: ${ total() }</h2>
             </div>

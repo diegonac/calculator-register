@@ -15,3 +15,12 @@ export interface Sums {
 }
 
 export type SetSumsProps = Dispatch<SetStateAction<SumsHooks["sums"]>>;
+
+export interface dropdownMsg {
+    [key: string]: string,
+}
+
+export interface dropdownOptions {
+    name: string,
+    list: string[],
+}
