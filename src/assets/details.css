@@ -1,0 +1,27 @@
+.container-details {
+    width: 70%;
+}
+
+.container-details div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.container-details div > * {
+    width: 50%;
+    text-align: center;
+}
+
+.container-details button {
+    background: none;
+    border: none;
+}
+
+.container-details button:focus,
+.container-details button:focus-visible {
+    outline: none;
+}
+
+.container-details button:hover {
+    border: none;
+}
