@@ -31,7 +31,7 @@ const Layout: React.FC = () => {
         <main>
             <h1>Calculadora de registro</h1>
             <div className="contain-input-client">
-                <span>Escribe el nombre de su cliente</span>
+                <span>Escribe el nombre de tu cliente</span>
                 <input type="text" name="name" value={client} onChange={clientChange} />
             </div>
             <Dropdown selectedOption={selectedSaleCondition} setSelectedOption={setSelectedSaleCondition} option={saleCondition} />

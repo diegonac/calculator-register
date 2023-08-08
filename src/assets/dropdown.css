@@ -11,6 +11,12 @@
     min-width: 155px;
 }
 
+.products {
+    position: sticky;
+    top: 0;
+    background-color: #242424;
+}
+
 .contain-dropdown select {
     padding: 1px 2px;
     box-sizing: content-box;
@@ -19,5 +25,11 @@
 @media only screen and (max-width: 767px) {
     .contain-dropdown {
         flex-direction: column;
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    .products {
+        background-color: #e5e5e5;
     }
 }

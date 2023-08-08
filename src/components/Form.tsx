@@ -17,6 +17,7 @@ const Form: React.FC<FormProps> = ({ addSum }) => {
             sum.current.value = "";
         }
     }
+    
     return (
         <form onSubmit={handleAdd}>
             <span>Escribe tus sumas</span>
