@@ -16,9 +16,9 @@ const generatePDF = (sums: SumsHooks["sums"], total: SumsHooks["total"], saleCon
             { text: `Condición de la venta: ${saleCondition.toLowerCase()}`, style: "info"},
             { columns: [ 
                 { stack: sums.map(sum => ([`${sum.product}`])), style: "products" }, 
-                { stack: sums.map(sum => ([`$${sum.amount}`])), style: "amounts" }
+                { stack: sums.map(sum => ([`${sum.amount}`])), style: "amounts" }
             ] },
-            { columns: [ {text: "Total", style: "total"}, {text: `$${total()}`, style: "amounts"} ] }
+            { columns: [ {text: "Total", style: "total"}, {text: `${total()}`, style: "amounts"} ] }
         ],
         styles: {
             title: {

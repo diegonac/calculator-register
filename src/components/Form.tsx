@@ -17,11 +17,20 @@ const Form: React.FC<FormProps> = ({ addSum }) => {
             sum.current.value = "";
         }
     }
+
+    const updateScrollFocus = () => {
+        setTimeout(() => {
+            const dropdownProduct = document.querySelector(".products");
+            if (dropdownProduct) {
+                dropdownProduct.scrollIntoView({ behavior: 'smooth' });
+            }
+        }, 500)
+    };
     
     return (
         <form onSubmit={handleAdd}>
             <span>Escribe tus sumas</span>
-            <input type="number" name="number" ref={sum} />
+            <input type="number" name="number" ref={sum} onClick={updateScrollFocus} />
             <button type="submit">Sumar</button>
         </form>
     )
