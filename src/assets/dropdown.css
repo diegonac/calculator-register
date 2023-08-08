@@ -8,6 +8,12 @@
 
 .contain-dropdown > * {
     height: 30px;
+    min-width: 155px;
+}
+
+.contain-dropdown select {
+    padding: 1px 2px;
+    box-sizing: content-box;
 }
 
 @media only screen and (max-width: 767px) {
