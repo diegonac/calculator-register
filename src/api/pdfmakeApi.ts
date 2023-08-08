@@ -46,7 +46,7 @@ const generatePDF = (sums: SumsHooks["sums"], total: SumsHooks["total"], saleCon
         }
     };
 
-    pdfMake.createPdf(docDefinition).open();
+    pdfMake.createPdf(docDefinition).download();
 
 };
 
