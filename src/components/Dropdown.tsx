@@ -16,7 +16,7 @@ const Dropdown: React.FC<DropdownProps> = ({ selectedOption, setSelectedOption, 
     };
 
     return (
-        <div className={"contain-dropdown " + option.name}>
+        <div className="contain-dropdown">
             <span>{ showDropdownMsg(option.name) }</span>
             <select value={selectedOption} onChange={handleOptionChange}>
                 <option value="">Selecciona una opción</option>

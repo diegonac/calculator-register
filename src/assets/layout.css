@@ -17,3 +17,10 @@ main h1 {
     width: 70%;
     justify-content: space-around;
 }
+
+@media only screen and (max-width: 767px) {
+    .contain-buttons-layout {
+        flex-direction: column;
+        min-height: 150px;
+    }
+}

@@ -1,11 +1,8 @@
 form {
-    position: sticky;
-    top: 34px;
     display: flex;
     flex-direction: column;
     margin: 20px 0;
     width: 70%;
-    background-color: #242424;
 }
 
 form input {
@@ -17,16 +14,4 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
-}
-
-@media (prefers-color-scheme: light) {
-    form {
-        background-color: #e5e5e5;
-    }
-}
-
-@media only screen and (max-width: 767px) {
-    form {
-        top: 63.5px;
-    }
 }
