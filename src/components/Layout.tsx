@@ -20,8 +20,9 @@ const Layout: React.FC = () => {
         generatePDF(sums, total, selectedSaleCondition, client);
     }
 
-    const handleNewSum = () => {
-        setSums([]);
+    const handleDeleteSum = () => {
+        const deleteSum: boolean = confirm("¿Quiere eliminar la suma?");
+        if(deleteSum) setSums([]);
     }
 
     const clientChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -52,7 +53,7 @@ const Layout: React.FC = () => {
                         { showDetails ? "Ocultar detalle" : "Ver detalle" }
                     </button>
                     <button title="PDF" type="button" onClick={handlePDF}>PDF</button> 
-                    <button title="Nueva suma" type="button" onClick={handleNewSum}>Eliminar suma</button>
+                    <button title="Eliminar suma" type="button" onClick={handleDeleteSum}>Eliminar suma</button>
                 </div>
             }
         </main>
