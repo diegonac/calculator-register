@@ -1,4 +1,4 @@
-import React, { useRef } from "react"
+import React, { ChangeEvent, useRef } from "react"
 import { SumsHooks } from "../models/sums.models";
 import "../assets/form.css";
 
@@ -9,7 +9,8 @@ interface FormProps {
 const Form: React.FC<FormProps> = ({ addSum }) => {
     const sum = useRef<HTMLInputElement>(null);
 
-    const handleAdd = () => {
+    const handleAdd = (event: ChangeEvent<HTMLFormElement>) => {
+        event.preventDefault();
         if(sum?.current?.value) {
             const newSum: number = parseInt(sum.current.value);
             addSum(newSum);
@@ -17,9 +18,10 @@ const Form: React.FC<FormProps> = ({ addSum }) => {
         }
     }
     return (
-        <form>
+        <form onSubmit={handleAdd}>
+            <span>Escribe tus sumas</span>
             <input type="number" name="number" ref={sum} />
-            <button onClick={handleAdd} type="button">Sumar</button>
+            <button type="submit">Sumar</button>
         </form>
     )
 }

@@ -14,14 +14,17 @@ const generatePDF = (sums: SumsHooks["sums"], total: SumsHooks["total"], saleCon
             { text: "Detalle:", style: "title"},
             { text: `Cliente: ${capitalizeWords(client)}`, style: "info"},
             { text: `Condición de la venta: ${saleCondition.toLowerCase()}`, style: "info"},
-            { columns: [ { stack: sums.map(sum => ([`${sum.product} $${sum.amount}`])), style: "list" } ] },
-            { text: `Total: $` + total(), style: "total" }
+            { columns: [ 
+                { stack: sums.map(sum => ([`${sum.product}`])), style: "list" }, 
+                { stack: sums.map(sum => ([`$${sum.amount}`])), style: "list" }
+            ] },
+            { columns: [ {text: "Total", style: "total"}, {text: `$${total()}`, style: "total"} ] }
         ],
         styles: {
             title: {
                 margin: 15,
                 characterSpacing: 1,
-                fontSize: 35,
+                fontSize: 26,
             },
             date: {
                 margin: [15, 0],
@@ -34,14 +37,14 @@ const generatePDF = (sums: SumsHooks["sums"], total: SumsHooks["total"], saleCon
             },
             list: {
                 margin: 15,
-                alignment: "center",
+                alignment: "justify",
                 characterSpacing: 1,
                 fontSize: 23,
             },
             total: {
                 margin: 15,
                 characterSpacing: 1,
-                fontSize: 30,
+                fontSize: 23,
             }
         }
     };
