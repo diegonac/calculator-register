@@ -7,4 +7,11 @@ export default defineConfig({
   server: {
     host: "0.0.0.0",
   },
+  build: {
+    rollupOptions: {
+      moduleContext: {
+        './node_modules/pdfmake/build/vfs_fonts.js': 'window',
+      },
+    },
+  },
 })
