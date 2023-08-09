@@ -1,10 +1,11 @@
-import pdfMake from 'pdfmake/build/pdfmake';
-import pdfFonts from 'pdfmake/build/vfs_fonts';
+import * as pdfMake from "pdfmake/build/pdfmake";
+import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 import { TDocumentDefinitions } from "pdfmake/interfaces";
 import { capitalizeWords, showDate } from '../utils/dataUtils';
 import { SumsHooks } from '../models/sums.models';
 
-pdfMake.vfs = pdfFonts.pdfMake.vfs;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+(<any>pdfMake).vfs = pdfFonts.pdfMake.vfs;
 
 const generatePDF = (sums: SumsHooks["sums"], total: SumsHooks["total"], saleCondition: string, client: string) => {
     
