@@ -5,7 +5,7 @@ export const capitalizeString = (str: string): string => {
 }
 
 export const capitalizeWords = (str: string):string => {
-    return str.replace(/\b\w/g, match => match.toUpperCase());
+    return str.toLowerCase().replace(/\b\w/g, match => match.toUpperCase());
 }
 
 export const showDate = (): string => {
@@ -18,12 +18,12 @@ export const showDate = (): string => {
 
 export const products: dropdownOptions = {
     name: "products",
-    list: ["Remera", "Pantalón", "Zapato"],
+    list: ["Camisa", "Remera", "Short", "Pantalón", "Ropa interior", "Calzado", "Accesorio", "Blanquería", "Marroquinería", "Perfume"],
 };
 
 export const saleCondition: dropdownOptions = {
     name: "saleCondition",
-    list: ["Efectivo", "Cuenta corriente", "Tarjeta"],
+    list: ["Efectivo", "Cuenta corriente", "Tarjeta", "Billetera virtual"],
 };
 
 export const dropdownMsgOptions: dropdownMsg = {

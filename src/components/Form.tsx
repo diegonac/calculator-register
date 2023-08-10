@@ -30,7 +30,7 @@ const Form: React.FC<FormProps> = ({ addSum }) => {
     return (
         <form onSubmit={handleAdd}>
             <span>Escribe tus sumas</span>
-            <input type="number" name="number" ref={sum} onClick={updateScrollFocus} />
+            <input type="number" name="number" ref={sum} onFocus={updateScrollFocus} onClick={updateScrollFocus} className="input-sum" />
             <button type="submit">Sumar</button>
         </form>
     )

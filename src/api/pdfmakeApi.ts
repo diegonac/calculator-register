@@ -1,10 +1,15 @@
 import * as pdfMake from "pdfmake/build/pdfmake";
+// En desarrollo:
+// import * as pdfFonts from 'pdfmake/build/vfs_fonts';
+// En producción:
 import 'pdfmake/build/vfs_fonts';
 import { TDocumentDefinitions } from "pdfmake/interfaces";
 import { capitalizeWords, showDate } from '../utils/dataUtils';
 import { SumsHooks } from '../models/sums.models';
 
-
+// En desarrollo:
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+// (<any>pdfMake).vfs = pdfFonts.pdfMake.vfs;
 
 const generatePDF = (sums: SumsHooks["sums"], total: SumsHooks["total"], saleCondition: string, client: string) => {
     
@@ -55,7 +60,7 @@ const generatePDF = (sums: SumsHooks["sums"], total: SumsHooks["total"], saleCon
         }
     };
 
-    pdfMake.createPdf(docDefinition).download();
+    pdfMake.createPdf(docDefinition).download(`${showDate()} - ${capitalizeWords(client)}`);
 
 };
 

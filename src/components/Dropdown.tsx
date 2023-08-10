@@ -14,6 +14,8 @@ const Dropdown: React.FC<DropdownProps> = ({ selectedOption, setSelectedOption, 
 
     const handleOptionChange = (event: ChangeEvent<HTMLSelectElement>) => {
         setSelectedOption(event.target.value);
+        const inputSum = document.querySelector<HTMLInputElement>(".input-sum");
+        if(inputSum && option.name === "products") inputSum.focus();
     };
 
     const updateScrollFocus = () => {
