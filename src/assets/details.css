@@ -1,33 +1,11 @@
 .container-details {
-    width: 70%;
-}
-
-.contain-input-client {
-    display: flex;
-    justify-content: space-between;
-    margin: 15px 0;
-    min-height: 30px;
-    width: 70%;
-}
-
-.contain-input-client > * {
-    height: 30px;
-    min-width: 155px;
-}
-
-.contain-input-client input {
-    border-style: solid;
-    border-width: 1px;
+    width: 95%;
+    max-width: 500px;
 }
 
 .container-details div {
     display: flex;
     justify-content: space-between;
-}
-
-.container-details div > * {
-    width: 50%;
-    text-align: center;
 }
 
 .container-details button {
@@ -42,6 +20,51 @@
 
 .container-details button:hover {
     border: none;
+}
+
+.container-details__titles > * {
+    width: 25%;
+    text-align: center;
+}
+
+.container-item {
+    position: relative;
+}
+
+.container-item div {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    text-align: center;
+    overflow: auto;
+}
+
+.container-item div > * {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.container-item .container-item__buttons {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    height: 56px;
+}
+
+.container-item__buttons button {
+    padding: 0 5px;
+}
+
+.container-item__delete-sum {
+    position: absolute;
+    top: 19.5px;
+    right: -6px;
+    padding: 0;
+    color: #9d0208;
+    z-index: 100;
 }
 
 @media only screen and (max-width: 767px) {

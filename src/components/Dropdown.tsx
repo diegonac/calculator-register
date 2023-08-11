@@ -1,38 +1,50 @@
-import React, { ChangeEvent, Dispatch, SetStateAction, useRef } from 'react';
+import React, { ChangeEvent, Dispatch, SetStateAction, useRef } from "react";
 import "../assets/dropdown.css";
-import { showDropdownMsg } from '../utils/dataUtils';
-import { dropdownOptions } from '../models/sums.models';
+import { showDropdownMsg } from "../utils/dataUtils";
+import { dropdownOptions } from "../models/sums.models";
 
 interface DropdownProps {
-    selectedOption: string,
-    setSelectedOption: Dispatch<SetStateAction<string>>,
-    option: dropdownOptions,
+  selectedOption: string;
+  setSelectedOption: Dispatch<SetStateAction<string>>;
+  option: dropdownOptions;
 }
 
-const Dropdown: React.FC<DropdownProps> = ({ selectedOption, setSelectedOption, option }) => {
-    const containDropdown = useRef<HTMLDivElement>(null);
+const Dropdown: React.FC<DropdownProps> = ({
+  selectedOption,
+  setSelectedOption,
+  option,
+}) => {
+  const containDropdown = useRef<HTMLDivElement>(null);
 
-    const handleOptionChange = (event: ChangeEvent<HTMLSelectElement>) => {
-        setSelectedOption(event.target.value);
-        const inputSum = document.querySelector<HTMLInputElement>(".input-sum");
-        if(inputSum && option.name === "products") inputSum.focus();
-    };
+  const handleOptionChange = (event: ChangeEvent<HTMLSelectElement>) => {
+    setSelectedOption(event.target.value);
+    const inputSum = document.querySelector<HTMLInputElement>(".input-sum");
+    if (inputSum && option.name === "products") inputSum.focus();
+  };
 
-    const updateScrollFocus = () => {
-        if (containDropdown.current) {
-            containDropdown.current.scrollIntoView({ behavior: 'smooth' });
-        }
-    };
+  const updateScrollFocus = () => {
+    if (containDropdown.current) {
+      containDropdown.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
-    return (
-        <div className={"contain-dropdown " + option.name} ref={containDropdown} >
-            <span>{ showDropdownMsg(option.name) }</span>
-            <select value={selectedOption} onChange={handleOptionChange} onClick={updateScrollFocus}>
-                <option value="">Selecciona una opción</option>
-                { option.list.map((item, index) => <option key={index} value={ item }>{ item }</option>) }
-            </select>
-        </div>
-    );
+  return (
+    <div className={"contain-dropdown " + option.name} ref={containDropdown}>
+      <span>{showDropdownMsg(option.name)}</span>
+      <select
+        value={selectedOption}
+        onChange={handleOptionChange}
+        onClick={updateScrollFocus}
+      >
+        <option value="">Selecciona una opción</option>
+        {option.list.map((item, index) => (
+          <option key={index} value={item}>
+            {item}
+          </option>
+        ))}
+      </select>
+    </div>
+  );
 };
 
 export default Dropdown;

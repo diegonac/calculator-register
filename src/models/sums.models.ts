@@ -2,11 +2,13 @@ import { Dispatch, SetStateAction } from "react";
 
 export type SumType = number;
 
-export type Sum = { id: number, amount: SumType, product: string };
+export type Sum = { id: number, amount: SumType, price: SumType, product: string };
 
 export interface SumsHooks extends Sums {
-    addSum: (sum: SumType) => void,
+    addSum: (price: SumType, amount: SumType) => void,
     removeSum: (sum: Sum) => void,
+    addAmount: (sum: Sum) => void,
+    removeAmount: (sum: Sum) => void,
     total: () => number,
 }
 
