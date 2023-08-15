@@ -72,7 +72,7 @@ button:focus-visible {
     background-color: #213547;
     color: #fff;
   }
-  .container-item button {
+  .container-item button, .container-units div button, .container-item__amount button {
     color: #213547;
   }
 }

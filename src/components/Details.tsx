@@ -28,19 +28,25 @@ const Details: React.FC<DetailsProps> = ({
         <h2>Detalle</h2>
         <p>Cliente: {capitalizeWords(client)}</p>
         <p>Condición de la venta: {saleCondition.toLowerCase()}</p>
-        <div className="container-details__titles">
-          <h3>Producto</h3>
-          <h3>Precio</h3>
-          <h3>Cantidad</h3>
-          <h3>Subtotal</h3>
+        <div className="container-items">
+            <h3>Producto</h3>
+            <h3>Precio</h3>
+            <h3>Cantidad</h3>
+            <h3>Subtotal</h3>
+            <h3></h3>
+          {sums.length > 0 &&
+            sums.map((sum) => (
+              <>
+                {" "}
+                <Items
+                  sum={sum}
+                  removeSum={removeSum}
+                  addAmount={addAmount}
+                  removeAmount={removeAmount}
+                />{" "}
+              </>
+            ))}
         </div>
-        {sums.length > 0 &&
-          sums.map((sum, index) => (
-            <div className="container-item" key={index}>
-              {" "}
-              <Items sum={sum} removeSum={removeSum} addAmount={addAmount} removeAmount={removeAmount} />{" "}
-            </div>
-          ))}
         <h2>Total: ${total()}</h2>
       </div>
     );

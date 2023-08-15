@@ -50,6 +50,15 @@ const Form: React.FC<FormProps> = ({ addSum }) => {
 
   return (
     <form onSubmit={handleSubmit}>
+      <span>Escribe tu suma</span>
+      <input
+        type="number"
+        name="number"
+        ref={sum}
+        onFocus={updateScrollFocus}
+        onClick={updateScrollFocus}
+        className="input-sum"
+      />
       <div className="container-units">
         <span>Unidades:</span>
         <div>
@@ -68,15 +77,6 @@ const Form: React.FC<FormProps> = ({ addSum }) => {
           </button>
         </div>
       </div>
-      <span>Escribe tu suma</span>
-      <input
-        type="number"
-        name="number"
-        ref={sum}
-        onFocus={updateScrollFocus}
-        onClick={updateScrollFocus}
-        className="input-sum"
-      />
       <button type="submit">Sumar</button>
     </form>
   );

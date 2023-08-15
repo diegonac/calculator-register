@@ -52,7 +52,7 @@ const Layout: React.FC = () => {
         option={products}
       />
       <Form addSum={addSum} />
-      <h2>Total: ${total()}</h2>
+      <h2 className="total-main">Total: ${total()}</h2>
       {showDetails && (
         <Details
           sums={sums}
