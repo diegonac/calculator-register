@@ -9,6 +9,8 @@ interface FormProps {
 
 const Form: React.FC<FormProps> = ({ addSum }) => {
   const sum = useRef<HTMLInputElement>(null);
+  const amountRef = useRef<HTMLInputElement>(null);
+
   const [amountValue, setAmountValue] = useState<number>(1);
 
   const handleSubmit = (event: ChangeEvent<HTMLFormElement>) => {
@@ -19,6 +21,7 @@ const Form: React.FC<FormProps> = ({ addSum }) => {
       sum.current.value = "";
     }
     setAmountValue(1);
+    sum.current?.focus();
   };
 
   const addAmount = () => {
@@ -38,6 +41,10 @@ const Form: React.FC<FormProps> = ({ addSum }) => {
   const resetAmount = (event: ChangeEvent<HTMLInputElement>) => {
     if (!event.target.value) setAmountValue(1);
   };
+
+  const focusAmount = () => {
+    amountRef.current?.select();
+  }
 
   const updateScrollFocus = () => {
     setTimeout(() => {
@@ -69,8 +76,10 @@ const Form: React.FC<FormProps> = ({ addSum }) => {
             type="number"
             name="amount"
             value={amountValue ? amountValue : ""}
+            onFocus={focusAmount}
             onChange={changeAmount}
             onBlur={resetAmount}
+            ref={amountRef}
           />
           <button title="Aumentar unidad" type="button" onClick={addAmount}>
             <AiOutlinePlusCircle />
