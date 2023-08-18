@@ -18,10 +18,28 @@ main .total-main {
 
 .contain-buttons-layout {
     display: flex;
+    flex-direction: column;
     margin: 20px 0;
     width: 70%;
     max-width: 500px;
     justify-content: space-around;
+}
+
+.contain-buttons-layout > *{
+    margin: 10px 0;
+}
+
+.contain-buttons-layout h3 {
+    text-align: center;
+}
+
+#email-client {
+    height: 30px;
+}
+
+#msg-layout {
+    margin: 0;
+    height: 25px;
 }
 
 .contain-input-client {

@@ -35,8 +35,8 @@ const Details: React.FC<DetailsProps> = ({
             <h3>Subtotal</h3>
             <h3></h3>
           {sums.length > 0 &&
-            sums.map((sum) => (
-              <>
+            sums.map((sum, index) => (
+              <React.Fragment key={index}>
                 {" "}
                 <Items
                   sum={sum}
@@ -44,7 +44,7 @@ const Details: React.FC<DetailsProps> = ({
                   addAmount={addAmount}
                   removeAmount={removeAmount}
                 />{" "}
-              </>
+              </React.Fragment>
             ))}
         </div>
         <h2>Total: ${total()}</h2>

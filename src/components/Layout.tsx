@@ -1,8 +1,8 @@
 import React, { ChangeEvent, useState } from "react";
 import Details from "./Details";
+import DetailsButtons from "./DetailsButtons";
 import Dropdown from "./Dropdown";
 import Form from "./Form";
-import generatePDF from "../api/pdfmakeApi";
 import { products, saleCondition } from "../utils/dataUtils";
 import useSums from "../hooks/useSums";
 import { SumsHooks } from "../models/sums.models";
@@ -11,27 +11,21 @@ import "../assets/layout.css";
 const Layout: React.FC = () => {
   const [sums, setSums] = useState<SumsHooks["sums"]>([]);
   const [selectedProduct, setSelectedProduct] = useState<string>("");
-  const [selectedSaleCondition, setSelectedSaleCondition] =
-    useState<string>("");
+  const [selectedSaleCondition, setSelectedSaleCondition] = useState<string>("");
   const [client, setClient] = useState<string>("");
   const [showDetails, setShowDetails] = useState<boolean>(false);
   const { addSum, removeSum, addAmount, removeAmount, total } = useSums(sums, setSums, selectedProduct);
 
-  const handlePDF = () => {
-    generatePDF(sums, total, selectedSaleCondition, client);
-  };
+  const deleteSums = () => {
+    setSums([]);
+  }
 
-  const handleDeleteSum = () => {
-    const deleteSum: boolean = confirm("¿Quiere eliminar la suma?");
-    if (deleteSum) setSums([]);
+  const toggleShowDetails = () => {
+    setShowDetails((prev) => !prev);
   };
 
   const clientChange = (event: ChangeEvent<HTMLInputElement>) => {
     setClient(event.target.value);
-  };
-
-  const toggleShowDetails = () => {
-    setShowDetails((prev) => !prev);
   };
 
   return (
@@ -65,21 +59,15 @@ const Layout: React.FC = () => {
         />
       )}
       {sums.length > 0 && (
-        <div className="contain-buttons-layout">
-          <button
-            title={showDetails ? "Ocultar detalle" : "Ver detalle"}
-            type="button"
-            onClick={toggleShowDetails}
-          >
-            {showDetails ? "Ocultar detalle" : "Ver detalle"}
-          </button>
-          <button title="PDF" type="button" onClick={handlePDF}>
-            PDF
-          </button>
-          <button title="Eliminar suma" type="button" onClick={handleDeleteSum}>
-            Eliminar suma
-          </button>
-        </div>
+        <DetailsButtons
+          sums={sums}
+          total={total}
+          selectedSaleCondition={selectedSaleCondition}
+          client={client}
+          showDetails={showDetails}
+          toggleShowDetails={toggleShowDetails}
+          deleteSums={deleteSums}
+        />
       )}
     </main>
   );
