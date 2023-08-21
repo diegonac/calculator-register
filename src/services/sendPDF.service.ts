@@ -1,4 +1,5 @@
 import axios from "axios";
+import config from "../config/config";
 
 class sendPDFService {
   async send(pdfFile: File, email: string, nameFile: string) {
@@ -8,7 +9,7 @@ class sendPDFService {
       const formData = new FormData();
       formData.append("pdf", pdfFile);
       const response = await axios.post(
-        "http://192.168.100.153:3000/api/v1/email/send-email",
+        config.db_Url,
         formData,
         {
           params: { email, nameFile },
