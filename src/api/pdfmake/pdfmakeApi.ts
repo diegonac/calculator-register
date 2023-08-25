@@ -1,15 +1,15 @@
 import * as pdfMake from "pdfmake/build/pdfmake";
 // En desarrollo:
-import * as pdfFonts from "pdfmake/build/vfs_fonts";
+// import * as pdfFonts from "pdfmake/build/vfs_fonts";
 // En producción:
-// import "pdfmake/build/vfs_fonts";
-import { prepareBody } from "../../utils/dataUtils";
+import "pdfmake/build/vfs_fonts";
+import { prepareBody, showDate, capitalizeWords } from "../../utils/dataUtils";
 import createDocDefinition from "./docDefinition";
 import { BodyDocDefinition, SumsHooks } from "../../types/sums.models";
 
 // En desarrollo:
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-(<any>pdfMake).vfs = pdfFonts.pdfMake.vfs;
+// (<any>pdfMake).vfs = pdfFonts.pdfMake.vfs;
 
 const generatePdf = (
   sums: SumsHooks["sums"],
@@ -29,7 +29,7 @@ const generatePdf = (
 
   const docDefinition = createDocDefinition(body);
 
-  pdfMake.createPdf(docDefinition).open();
+  pdfMake.createPdf(docDefinition).download(`${showDate()} - ${capitalizeWords(client)}`);
 };
 
 export default generatePdf;
