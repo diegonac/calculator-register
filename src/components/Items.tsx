@@ -1,7 +1,7 @@
 import React from "react";
 import { AiOutlineMinusCircle, AiOutlinePlusCircle } from "react-icons/ai";
 import { BsTrash3 } from "react-icons/bs";
-import { Sum, SumsHooks } from "../models/sums.models";
+import { Sum, SumsHooks } from "../types/sums.models";
 import "../assets/items.css";
 
 interface ItemsProps {

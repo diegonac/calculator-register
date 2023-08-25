@@ -1,6 +1,6 @@
 import React, { ChangeEvent, useRef, useState } from "react";
 import { AiOutlineMinusCircle, AiOutlinePlusCircle } from "react-icons/ai";
-import { SumsHooks } from "../models/sums.models";
+import { SumsHooks } from "../types/sums.models";
 import "../assets/form.css";
 
 interface FormProps {

@@ -1,12 +1,12 @@
 import React, { ChangeEvent, Dispatch, SetStateAction, useRef } from "react";
 import "../assets/dropdown.css";
 import { showDropdownMsg } from "../utils/dataUtils";
-import { dropdownOptions } from "../models/sums.models";
+import { DropdownOptions } from "../types/sums.models";
 
 interface DropdownProps {
   selectedOption: string;
   setSelectedOption: Dispatch<SetStateAction<string>>;
-  option: dropdownOptions;
+  option: DropdownOptions;
 }
 
 const Dropdown: React.FC<DropdownProps> = ({

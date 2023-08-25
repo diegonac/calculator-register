@@ -5,7 +5,7 @@ import Dropdown from "./Dropdown";
 import Form from "./Form";
 import { products, saleCondition } from "../utils/dataUtils";
 import useSums from "../hooks/useSums";
-import { SumsHooks } from "../models/sums.models";
+import { SumsHooks } from "../types/sums.models";
 import "../assets/layout.css";
 
 const Layout: React.FC = () => {

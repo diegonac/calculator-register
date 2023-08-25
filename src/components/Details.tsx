@@ -1,6 +1,6 @@
 import React from "react";
 import Items from "./Items";
-import { Sums, SumsHooks } from "../models/sums.models";
+import { Sums, SumsHooks } from "../types/sums.models";
 import "../assets/details.css";
 import { capitalizeWords } from "../utils/dataUtils";
 

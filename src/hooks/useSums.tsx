@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { SumsHooks, SetSumsProps, Sum, SumType } from "../models/sums.models";
+import { SumsHooks, SetSumsProps, Sum, SumType } from "../types/sums.models";
 
 const useSums = (
   sums: SumsHooks["sums"],
