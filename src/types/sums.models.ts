@@ -17,9 +17,7 @@ export interface SumsHooks {
   deleteAllSums: () => void;
 }
 
-export interface Sums {
-  sums: Sum[];
-}
+export type Sums = Sum[];
 
 export type SetSumsProps = Dispatch<SetStateAction<Sums>>;
 

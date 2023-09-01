@@ -5,14 +5,14 @@ import * as pdfMake from "pdfmake/build/pdfmake";
 import "pdfmake/build/vfs_fonts";
 import { prepareBody, showDate, capitalizeWords } from "../../utils/dataUtils";
 import createDocDefinition from "./docDefinition";
-import { BodyDocDefinition, SumsHooks } from "../../types/sums.models";
+import { BodyDocDefinition, Sums } from "../../types/sums.models";
 
 // En desarrollo:
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 // (<any>pdfMake).vfs = pdfFonts.pdfMake.vfs;
 
 const generatePdf = (
-  sums: SumsHooks["sums"],
+  sums: Sums,
   total: string,
   saleCondition: string,
   client: string

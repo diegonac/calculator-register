@@ -6,13 +6,13 @@ import React, {
   useState,
 } from "react";
 import { showDate } from "../utils/dataUtils";
-import { Sum } from "../types/sums.models";
+import { Sums } from "../types/sums.models";
 
 type Order = {
   date: string;
   client: string;
   saleCondition: string;
-  sums: [] | Sum[];
+  sums: [] | Sums;
   total: number;
 };
 
