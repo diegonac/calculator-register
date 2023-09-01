@@ -1,69 +1,17 @@
 main {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    align-items: center;
-    width: 100vw;
-    max-width: 620px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-items: center;
+  width: 100vw;
+  max-width: 620px;
 }
 
 main h1 {
-    margin-top: 30px;
-    font-size: 28px;
+  margin-top: 30px;
+  font-size: 28px;
 }
 
 main .total-main {
-    text-align: center;
-}
-
-.contain-buttons-layout {
-    display: flex;
-    flex-direction: column;
-    margin: 20px 0;
-    width: 70%;
-    max-width: 500px;
-    justify-content: space-around;
-}
-
-.contain-buttons-layout > *{
-    margin: 10px 0;
-}
-
-.contain-buttons-layout h3 {
-    text-align: center;
-}
-
-#email-client {
-    height: 30px;
-}
-
-#msg-layout {
-    margin: 0;
-    height: 25px;
-}
-
-.contain-input-client {
-    display: flex;
-    justify-content: space-between;
-    margin: 15px 0;
-    min-height: 30px;
-    width: 70%;
-    max-width: 500px;
-}
-
-.contain-input-client > * {
-    height: 30px;
-    min-width: 180px;
-}
-
-.contain-input-client input {
-    border-style: solid;
-    border-width: 1px;
-}
-
-@media only screen and (max-width: 767px) {
-    .contain-buttons-layout {
-        flex-direction: column;
-        min-height: 150px;
-    }
+  text-align: center;
 }

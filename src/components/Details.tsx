@@ -1,53 +1,34 @@
 import React from "react";
-import Items from "./Items";
-import { Sums, SumsHooks } from "../types/sums.models";
-import "../assets/details.css";
 import { capitalizeWords } from "../utils/dataUtils";
+import Items from "./Items";
+import useSumsContext from "../hooks/useSumsContext";
+import "../assets/details.css";
 
-interface DetailsProps extends Sums {
-  removeSum: SumsHooks["removeSum"];
-  total: SumsHooks["total"];
-  saleCondition: string;
-  client: string;
-  addAmount: SumsHooks["addAmount"];
-  removeAmount: SumsHooks["removeAmount"];
-}
-
-const Details: React.FC<DetailsProps> = ({
-  sums,
-  removeSum,
-  total,
-  saleCondition,
-  client,
-  addAmount,
-  removeAmount,
-}) => {
-  if (sums.length > 0) {
+const Details: React.FC = () => {
+  const {order} = useSumsContext();
+  if (order.sums.length > 0) {
     return (
-      <div className="container-details">
+      <div id="container-details">
         <h2>Detalle</h2>
-        <p>Cliente: {capitalizeWords(client)}</p>
-        <p>Condición de la venta: {saleCondition.toLowerCase()}</p>
+        <p>Cliente: {capitalizeWords(order.client)}</p>
+        <p>Condición de la venta: {order.saleCondition.toLowerCase()}</p>
         <div className="container-items">
             <h3>Producto</h3>
             <h3>Precio</h3>
             <h3>Cantidad</h3>
             <h3>Subtotal</h3>
             <h3></h3>
-          {sums.length > 0 &&
-            sums.map((sum, index) => (
+          {order.sums.length > 0 &&
+            order.sums.map((sum, index) => (
               <React.Fragment key={index}>
                 {" "}
                 <Items
                   sum={sum}
-                  removeSum={removeSum}
-                  addAmount={addAmount}
-                  removeAmount={removeAmount}
                 />{" "}
               </React.Fragment>
             ))}
         </div>
-        <h2>Total: ${total()}</h2>
+        <h2>Total: ${order.total}</h2>
       </div>
     );
   }

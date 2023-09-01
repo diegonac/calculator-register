@@ -5,23 +5,23 @@ export type SumType = number;
 export type Sum = {
   id: number;
   amount: SumType;
-  price: SumType;
+  price: string;
   product: string;
 };
 
-export interface SumsHooks extends Sums {
-  addSum: (price: SumType, amount: SumType) => void;
+export interface SumsHooks {
+  addSum: (sum: Omit<Sum, "id">) => void;
   removeSum: (sum: Sum) => void;
   addAmount: (sum: Sum) => void;
   removeAmount: (sum: Sum) => void;
-  total: () => number;
+  deleteAllSums: () => void;
 }
 
 export interface Sums {
   sums: Sum[];
 }
 
-export type SetSumsProps = Dispatch<SetStateAction<SumsHooks["sums"]>>;
+export type SetSumsProps = Dispatch<SetStateAction<Sums>>;
 
 export interface DropdownMsg {
   [key: string]: string;

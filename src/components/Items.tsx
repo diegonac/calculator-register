@@ -1,22 +1,18 @@
 import React from "react";
 import { AiOutlineMinusCircle, AiOutlinePlusCircle } from "react-icons/ai";
 import { BsTrash3 } from "react-icons/bs";
-import { Sum, SumsHooks } from "../types/sums.models";
+import { Sum } from "../types/sums.models";
+import useSums from "../hooks/useSums";
 import "../assets/items.css";
 
 interface ItemsProps {
   sum: Sum;
-  removeSum: SumsHooks["removeSum"];
-  addAmount: SumsHooks["addAmount"];
-  removeAmount: SumsHooks["removeAmount"];
 }
 
-const Items: React.FC<ItemsProps> = ({
-  sum,
-  removeSum,
-  addAmount,
-  removeAmount,
-}) => {
+const Items: React.FC<ItemsProps> = ({ sum }) => {
+  
+  const { removeSum, addAmount, removeAmount } = useSums();
+
   const handleDelete = () => {
     removeSum(sum);
   };
@@ -53,8 +49,8 @@ const Items: React.FC<ItemsProps> = ({
         </button>
       </div>
 
-      <p>{sum.price * sum.amount}</p>
-      
+      <p>{parseInt(sum.price) * sum.amount}</p>
+
       <button
         title="Eliminar suma"
         type="button"

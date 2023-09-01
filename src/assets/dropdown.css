@@ -1,24 +1,26 @@
 .contain-dropdown {
-    display: flex;
-    justify-content: space-between;
-    margin: 15px 0;
-    min-height: 30px;
-    width: 70%;
-    max-width: 500px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 30px;
+  max-width: 500px;
 }
 
 .contain-dropdown > * {
-    height: 30px;
-    min-width: 180px;
+  height: 30px;
+  min-width: 180px;
 }
 
 .contain-dropdown select {
-    padding: 1px 2px;
-    box-sizing: content-box;
+  padding: 1px 2px;
+  border-width: 2px;
+  border-style: solid;
+  box-sizing: content-box;
 }
 
 @media only screen and (max-width: 767px) {
-    .contain-dropdown {
-        flex-direction: column;
-    }
+  .contain-dropdown {
+    flex-direction: column;
+    align-items: normal;
+  }
 }

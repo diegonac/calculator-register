@@ -1,34 +1,28 @@
-.container-details {
-    width: 90%;
-    overflow-x: auto;
+#container-details {
+  width: 90%;
+  overflow-x: auto;
 }
 
-.container-details button {
-    background: none;
-    border: none;
+#container-details button {
+  background: none;
+  border: none;
 }
 
-.container-details button:focus,
-.container-details button:focus-visible {
-    outline: none;
+#container-details button:focus,
+#container-details button:focus-visible {
+  outline: none;
 }
 
-.container-details button:hover {
-    border: none;
+#container-details button:hover {
+  border: none;
 }
 
-.container-details__titles {
-    display: flex;
-    font-size: 14px;
+#container-details__titles {
+  display: flex;
+  font-size: 14px;
 }
 
-.container-details__titles > * {
-    min-width: 25%;
-    text-align: center;
-}
-
-@media only screen and (max-width: 767px) {
-    .contain-input-client {
-        flex-direction: column;
-    }
+#container-details__titles > * {
+  min-width: 25%;
+  text-align: center;
 }

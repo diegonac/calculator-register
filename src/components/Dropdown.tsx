@@ -1,25 +1,25 @@
-import React, { ChangeEvent, Dispatch, SetStateAction, useRef } from "react";
-import "../assets/dropdown.css";
-import { showDropdownMsg } from "../utils/dataUtils";
+import React, { ChangeEvent, useRef } from "react";
 import { DropdownOptions } from "../types/sums.models";
+import { showDropdownMsg } from "../utils/dataUtils";
+import "../assets/dropdown.css";
 
 interface DropdownProps {
   selectedOption: string;
-  setSelectedOption: Dispatch<SetStateAction<string>>;
-  option: DropdownOptions;
+  onChange: (event: ChangeEvent<HTMLSelectElement>) => void;
+  optionList: DropdownOptions;
 }
 
 const Dropdown: React.FC<DropdownProps> = ({
   selectedOption,
-  setSelectedOption,
-  option,
+  onChange,
+  optionList,
 }) => {
   const containDropdown = useRef<HTMLDivElement>(null);
 
   const handleOptionChange = (event: ChangeEvent<HTMLSelectElement>) => {
-    setSelectedOption(event.target.value);
+    onChange(event);
     const inputSum = document.querySelector<HTMLInputElement>(".input-sum");
-    if (inputSum && option.name === "products") inputSum.focus();
+    if (inputSum && optionList.name === "products") inputSum.focus();
   };
 
   const updateScrollFocus = () => {
@@ -29,15 +29,15 @@ const Dropdown: React.FC<DropdownProps> = ({
   };
 
   return (
-    <div className={"contain-dropdown " + option.name} ref={containDropdown}>
-      <span>{showDropdownMsg(option.name)}</span>
+    <div className={"contain-dropdown " + optionList.name} ref={containDropdown}>
+      <span>{showDropdownMsg(optionList.name)}</span>
       <select
         value={selectedOption}
         onChange={handleOptionChange}
         onClick={updateScrollFocus}
       >
         <option value="">Selecciona una opción</option>
-        {option.list.map((item, index) => (
+        {optionList.list.map((item, index) => (
           <option key={index} value={item}>
             {item}
           </option>

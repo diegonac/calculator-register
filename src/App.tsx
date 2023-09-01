@@ -1,8 +1,13 @@
-import Layout from './components/Layout'
-import './App.css'
+import Layout from "./components/Layout";
+import { SumsProvider } from "./context/SumsContext";
+import "./App.css";
 
 function App() {
-  return <Layout />
+  return (
+    <SumsProvider>
+      <Layout />
+    </SumsProvider>
+  );
 }
 
-export default App
+export default App;

@@ -1,91 +1,72 @@
-import React, { ChangeEvent, useRef, useState } from "react";
-import { AiOutlineMinusCircle, AiOutlinePlusCircle } from "react-icons/ai";
-import { SumsHooks } from "../types/sums.models";
+import React, { ChangeEvent, useState, useRef } from "react";
+import Amount from "./Amount";
+import Dropdown from "./Dropdown";
+import Sum from "./Sum";
+import useSums from "../hooks/useSums";
+import useSumsContext from "../hooks/useSumsContext";
+import { products, saleCondition } from "../utils/dataUtils";
 import "../assets/form.css";
 
-interface FormProps {
-  addSum: SumsHooks["addSum"];
-}
+const Form: React.FC = () => {
+  const { order, setOrder } = useSumsContext();
 
-const Form: React.FC<FormProps> = ({ addSum }) => {
-  const sum = useRef<HTMLInputElement>(null);
-  const amountRef = useRef<HTMLInputElement>(null);
+  const { addSum } = useSums();
 
-  const [amountValue, setAmountValue] = useState<number>(1);
+  const sumInput = useRef<HTMLInputElement>(null);
+
+  const [selectedProduct, setSelectedProduct] = useState<string>("");
+  const [price, setPrice] = useState<string>("");
+  const [amount, setAmount] = useState<number>(1);
+
+  const handleClientChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setOrder((prev) => ({ ...prev, client: event.target.value }));
+  };
+
+  const handleSaleConditionChange = (event: ChangeEvent<HTMLSelectElement>) => {
+    setOrder((prev) => ({ ...prev, saleCondition: event.target.value }));
+  };
+
+  const handleProductChange = (event: ChangeEvent<HTMLSelectElement>) => {
+    setSelectedProduct(event.target.value);
+  };
+
+  const handlePriceChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setPrice(event.target.value);
+  };
 
   const handleSubmit = (event: ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (sum?.current?.value) {
-      const newSum: number = parseInt(sum.current.value);
-      addSum(newSum, amountValue);
-      sum.current.value = "";
+    if (sumInput.current?.value) {
+      addSum({ price, amount, product: selectedProduct });
+      setPrice("");
+      setAmount(1);
     }
-    setAmountValue(1);
-    sum.current?.focus();
-  };
-
-  const addAmount = () => {
-    setAmountValue((prev) => prev + 1);
-  };
-
-  const removeAmount = () => {
-    if (amountValue <= 1) return null;
-    setAmountValue((prev) => prev - 1);
-  };
-
-  const changeAmount = (event: ChangeEvent<HTMLInputElement>) => {
-    if (parseInt(event.target.value) < 1) return null;
-    setAmountValue(parseInt(event.target.value || "0"));
-  };
-
-  const resetAmount = (event: ChangeEvent<HTMLInputElement>) => {
-    if (!event.target.value) setAmountValue(1);
-  };
-
-  const focusAmount = () => {
-    amountRef.current?.select();
-  }
-
-  const updateScrollFocus = () => {
-    setTimeout(() => {
-      const dropdownProduct = document.querySelector(".products");
-      if (dropdownProduct) {
-        dropdownProduct.scrollIntoView({ behavior: "smooth" });
-      }
-    }, 500);
+    sumInput.current?.focus();
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <span>Escribe tu suma</span>
-      <input
-        type="number"
-        name="number"
-        ref={sum}
-        onFocus={updateScrollFocus}
-        onClick={updateScrollFocus}
-        className="input-sum"
+      <label className="container-input-client">
+        <span>Escribe el nombre de tu cliente</span>
+        <input
+          type="text"
+          name="name"
+          value={order.client}
+          onChange={handleClientChange}
+        />
+      </label>
+      <Dropdown
+        selectedOption={order.saleCondition}
+        onChange={handleSaleConditionChange}
+        optionList={saleCondition}
       />
-      <div className="container-units">
-        <span>Unidades:</span>
-        <div>
-          <button title="Quitar unidad" type="button" onClick={removeAmount}>
-            <AiOutlineMinusCircle />
-          </button>
-          <input
-            type="number"
-            name="amount"
-            value={amountValue ? amountValue : ""}
-            onFocus={focusAmount}
-            onChange={changeAmount}
-            onBlur={resetAmount}
-            ref={amountRef}
-          />
-          <button title="Aumentar unidad" type="button" onClick={addAmount}>
-            <AiOutlinePlusCircle />
-          </button>
-        </div>
-      </div>
+      <Dropdown
+        selectedOption={selectedProduct}
+        onChange={handleProductChange}
+        optionList={products}
+      />
+      <Sum value={price} onChange={handlePriceChange} sumInput={sumInput} />
+      <Amount value={amount} setValue={setAmount} />
       <button type="submit">Sumar</button>
     </form>
   );
