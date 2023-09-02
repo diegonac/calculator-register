@@ -4,11 +4,10 @@ import Dropdown from "./Dropdown";
 import Sum from "./Sum";
 import useSums from "../hooks/useSums";
 import useSumsContext from "../hooks/useSumsContext";
-import { products, saleCondition } from "../utils/dataUtils";
 import "../assets/form.css";
 
 const Form: React.FC = () => {
-  const { order, setOrder } = useSumsContext();
+  const { order, setOrder, productsOptions, saleConditionOptions } = useSumsContext();
 
   const { addSum } = useSums();
 
@@ -58,12 +57,12 @@ const Form: React.FC = () => {
       <Dropdown
         selectedOption={order.saleCondition}
         onChange={handleSaleConditionChange}
-        optionList={saleCondition}
+        optionList={saleConditionOptions}
       />
       <Dropdown
         selectedOption={selectedProduct}
         onChange={handleProductChange}
-        optionList={products}
+        optionList={productsOptions}
       />
       <Sum value={price} onChange={handlePriceChange} sumInput={sumInput} />
       <Amount value={amount} setValue={setAmount} />

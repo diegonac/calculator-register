@@ -18,6 +18,26 @@
   box-sizing: content-box;
 }
 
+.button-set-list {
+  border: none;
+  background: none;
+  padding: 0;
+  width: max-content;
+  min-width: max-content;
+  text-decoration: underline;
+}
+
+.button-set-list:hover {
+  outline: none;
+  border: none;
+  color: #646cff;
+}
+
+.button-set-list:focus,
+.button-set-list:focus-visible {
+  outline: none;
+}
+
 @media only screen and (max-width: 767px) {
   .contain-dropdown {
     flex-direction: column;

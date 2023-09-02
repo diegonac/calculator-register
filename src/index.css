@@ -7,6 +7,8 @@
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
 
+  --bk-color: #242424;
+
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -64,6 +66,7 @@ button:focus-visible {
   :root {
     color: #213547;
     background-color: #e5e5e5;
+    --bk-color: #e5e5e5;
   }
   a:hover {
     color: #747bff;
@@ -72,7 +75,12 @@ button:focus-visible {
     background-color: #213547;
     color: #fff;
   }
-  .container-item button, .container-units div button, .container-item__amount button {
+  .container-item button,
+  .container-units div button,
+  .container-item__amount button,
+  .button-set-list,
+  .button-close-modal,
+  .container-add-option button {
     color: #213547;
   }
 }

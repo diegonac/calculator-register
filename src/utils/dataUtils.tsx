@@ -1,4 +1,4 @@
-import { DropdownMsg, DropdownOptions, SumsHooks } from "../types/sums.models";
+import { CATEGORIES, DropdownMsg, DropdownOptions, Sums } from "../types/sums.models";
 
 export const capitalizeString = (str: string): string => {
   return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
@@ -24,25 +24,30 @@ export const showDate = (): string => {
   return capitalizeString(formattedDate);
 };
 
-export const products: DropdownOptions = {
-  name: "products",
+export const productsDefault: DropdownOptions = {
+  name: CATEGORIES.PRODUCTS,
   list: [
-    "Camisa",
-    "Remera",
-    "Short",
-    "Pantalón",
-    "Ropa interior",
-    "Calzado",
-    "Accesorio",
-    "Blanquería",
-    "Marroquinería",
-    "Perfume",
+    { concept: "Camisa", id: 1 },
+    { concept: "Remera", id: 2 },
+    { concept: "Short", id: 3 },
+    { concept: "Pantalón", id: 4 },
+    { concept: "Ropa interior", id: 5 },
+    { concept: "Calzado", id: 6 },
+    { concept: "Accesorio", id: 7 },
+    { concept: "Blanquería", id: 8 },
+    { concept: "Marroquinería", id: 9 },
+    { concept: "Perfume", id: 10 },
   ],
 };
 
-export const saleCondition: DropdownOptions = {
-  name: "saleCondition",
-  list: ["Efectivo", "Cuenta corriente", "Tarjeta", "Billetera virtual"],
+export const saleConditionDefault: DropdownOptions = {
+  name: CATEGORIES.SALE_CONDITION,
+  list: [
+    { concept: "Efectivo", id: 1 },
+    { concept: "Cuenta corriente", id: 2 },
+    { concept: "Tarjeta", id: 3 },
+    { concept: "Billetera virtual", id: 4 },
+  ],
 };
 
 export const dropdownMsgOptions: DropdownMsg = {
@@ -54,11 +59,11 @@ export const showDropdownMsg = (option: string): string => {
   return dropdownMsgOptions[option];
 };
 
-export const prepareBody = (sums: SumsHooks["sums"]) => {
+export const prepareBody = (sums: Sums) => {
   const amounts = sums.map((sum) => `${sum.amount}`);
   const prices = sums.map((sum) => `${sum.price}`);
   const products = sums.map((sum) => `${sum.product}`);
-  const subTotal = sums.map((sum) => `${sum.price * sum.amount}`);
+  const subTotal = sums.map((sum) => `${parseInt(sum.price) * sum.amount}`);
   amounts.unshift("UNIDADES");
   prices.unshift("PRECIO");
   products.unshift("PRODUCTOS");

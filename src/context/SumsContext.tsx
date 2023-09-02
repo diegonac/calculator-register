@@ -5,27 +5,24 @@ import React, {
   createContext,
   useState,
 } from "react";
-import { showDate } from "../utils/dataUtils";
-import { Sums } from "../types/sums.models";
+import { productsDefault, saleConditionDefault, showDate } from "../utils/dataUtils";
+import { CATEGORIES, DropdownOptions, Sums } from "../types/sums.models";
 
-type Order = {
-  date: string;
-  client: string;
-  saleCondition: string;
-  sums: [] | Sums;
-  total: number;
-};
+const productsStorage: DropdownOptions | null = JSON.parse(localStorage.getItem(CATEGORIES.PRODUCTS) || "null");
+const saleConditionStorage: DropdownOptions | null = JSON.parse(localStorage.getItem(CATEGORIES.SALE_CONDITION) || "null");
+
+if(!productsStorage) {
+  localStorage.setItem(CATEGORIES.PRODUCTS, JSON.stringify(productsDefault));
+}
+if(!saleConditionStorage) {
+  localStorage.setItem(CATEGORIES.SALE_CONDITION, JSON.stringify(saleConditionDefault));
+}
+
+export const SumsContext = createContext<ISumsContext>({} as ISumsContext);
 
 interface SumsProviderProps {
   children: ReactNode;
 }
-
-interface ISumsContext {
-  order: Order;
-  setOrder: Dispatch<SetStateAction<Order>>;
-}
-
-export const SumsContext = createContext<ISumsContext>({} as ISumsContext);
 
 export const SumsProvider: React.FC<SumsProviderProps> = ({ children }) => {
   const [order, setOrder] = useState<Order>({
@@ -35,14 +32,39 @@ export const SumsProvider: React.FC<SumsProviderProps> = ({ children }) => {
     sums: [],
     total: 0,
   });
+
+  const [productsOptions, setProductsOptions] = useState<DropdownOptions>(productsStorage || productsDefault);
+  const [saleConditionOptions, setSaleConditionOptions] = useState<DropdownOptions>(saleConditionStorage || saleConditionDefault);
+  
   return (
     <SumsContext.Provider
       value={{
         order,
+        productsOptions,
+        saleConditionOptions,
         setOrder,
+        setProductsOptions,
+        setSaleConditionOptions,
       }}
     >
       {children}
     </SumsContext.Provider>
   );
 };
+
+type Order = {
+  date: string;
+  client: string;
+  saleCondition: string;
+  sums: [] | Sums;
+  total: number;
+};
+
+interface ISumsContext {
+  order: Order;
+  setOrder: Dispatch<SetStateAction<Order>>;
+  productsOptions: DropdownOptions;
+  setProductsOptions: Dispatch<SetStateAction<DropdownOptions>>;
+  saleConditionOptions: DropdownOptions;
+  setSaleConditionOptions: Dispatch<SetStateAction<DropdownOptions>>;
+}

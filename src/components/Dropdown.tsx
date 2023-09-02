@@ -1,5 +1,6 @@
 import React, { ChangeEvent, useRef } from "react";
 import { DropdownOptions } from "../types/sums.models";
+import DropdownUpdate from "./DropdownUpdate";
 import { showDropdownMsg } from "../utils/dataUtils";
 import "../assets/dropdown.css";
 
@@ -15,6 +16,7 @@ const Dropdown: React.FC<DropdownProps> = ({
   optionList,
 }) => {
   const containDropdown = useRef<HTMLDivElement>(null);
+  const modalOptions = useRef<HTMLDivElement>(null);
 
   const handleOptionChange = (event: ChangeEvent<HTMLSelectElement>) => {
     onChange(event);
@@ -28,21 +30,34 @@ const Dropdown: React.FC<DropdownProps> = ({
     }
   };
 
+  const handleSetList = () => {
+    modalOptions.current?.setAttribute("style", "display: flex;")
+  }
+
   return (
-    <div className={"contain-dropdown " + optionList.name} ref={containDropdown}>
-      <span>{showDropdownMsg(optionList.name)}</span>
-      <select
-        value={selectedOption}
-        onChange={handleOptionChange}
-        onClick={updateScrollFocus}
+    <div>
+      <div
+        className={"contain-dropdown " + optionList.name}
+        ref={containDropdown}
       >
-        <option value="">Selecciona una opción</option>
-        {optionList.list.map((item, index) => (
-          <option key={index} value={item}>
-            {item}
-          </option>
-        ))}
-      </select>
+        <span>{showDropdownMsg(optionList.name)}</span>
+        <select
+          value={selectedOption}
+          onChange={handleOptionChange}
+          onClick={updateScrollFocus}
+        >
+          <option value="">Selecciona una opción</option>
+          {optionList.list.map((item, index) => (
+            <option key={index} value={item.concept}>
+              {item.concept}
+            </option>
+          ))}
+        </select>
+      </div>
+      <button type="button" title="Editar lista" className="button-set-list" onClick={handleSetList}>
+        Editar lista
+      </button>
+      <DropdownUpdate options={optionList} modalOptions={modalOptions} />
     </div>
   );
 };

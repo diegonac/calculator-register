@@ -9,7 +9,7 @@ export type Sum = {
   product: string;
 };
 
-export interface SumsHooks {
+export interface SumsHook {
   addSum: (sum: Omit<Sum, "id">) => void;
   removeSum: (sum: Sum) => void;
   addAmount: (sum: Sum) => void;
@@ -25,9 +25,11 @@ export interface DropdownMsg {
   [key: string]: string;
 }
 
+export type Option = {concept: string, id: number};
+
 export interface DropdownOptions {
   name: string;
-  list: string[];
+  list: Option[];
 }
 
 export interface BodyDocDefinition {
@@ -42,4 +44,9 @@ export interface BodyDocDefinition {
 
 export interface BodySendEmail extends BodyDocDefinition {
   email: string,
+}
+
+export enum CATEGORIES {
+  PRODUCTS = "products",
+  SALE_CONDITION = "saleCondition",
 }

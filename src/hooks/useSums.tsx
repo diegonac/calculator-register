@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { SumsHooks, Sum } from "../types/sums.models";
+import { SumsHook, Sum } from "../types/sums.models";
 import { showDate } from "../utils/dataUtils";
 import useSumsContext from "./useSumsContext";
 
-const useSums = (): SumsHooks => {
+const useSums = (): SumsHook => {
   const { order, setOrder } = useSumsContext();
 
   const [id, setId] = useState<number>(0);
