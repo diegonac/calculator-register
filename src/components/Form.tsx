@@ -7,13 +7,19 @@ import useSumsContext from "../hooks/useSumsContext";
 import "../assets/form.css";
 
 const Form: React.FC = () => {
-  const { order, setOrder, productsOptions, saleConditionOptions } = useSumsContext();
+  const {
+    order,
+    productsOptions,
+    saleConditionOptions,
+    selectedProduct,
+    setOrder,
+    setSelectedProduct,
+  } = useSumsContext();
 
   const { addSum } = useSums();
 
   const sumInput = useRef<HTMLInputElement>(null);
 
-  const [selectedProduct, setSelectedProduct] = useState<string>("");
   const [price, setPrice] = useState<string>("");
   const [amount, setAmount] = useState<number>(1);
 

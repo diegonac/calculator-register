@@ -36,15 +36,19 @@ export const SumsProvider: React.FC<SumsProviderProps> = ({ children }) => {
   const [productsOptions, setProductsOptions] = useState<DropdownOptions>(productsStorage || productsDefault);
   const [saleConditionOptions, setSaleConditionOptions] = useState<DropdownOptions>(saleConditionStorage || saleConditionDefault);
   
+  const [selectedProduct, setSelectedProduct] = useState<string>("");
+
   return (
     <SumsContext.Provider
       value={{
         order,
         productsOptions,
         saleConditionOptions,
+        selectedProduct,
         setOrder,
         setProductsOptions,
         setSaleConditionOptions,
+        setSelectedProduct,
       }}
     >
       {children}
@@ -54,9 +58,11 @@ export const SumsProvider: React.FC<SumsProviderProps> = ({ children }) => {
 
 interface ISumsContext {
   order: Order;
-  setOrder: Dispatch<SetStateAction<Order>>;
   productsOptions: DropdownOptions;
-  setProductsOptions: Dispatch<SetStateAction<DropdownOptions>>;
   saleConditionOptions: DropdownOptions;
+  selectedProduct: string;
+  setOrder: Dispatch<SetStateAction<Order>>;
+  setProductsOptions: Dispatch<SetStateAction<DropdownOptions>>;
   setSaleConditionOptions: Dispatch<SetStateAction<DropdownOptions>>;
+  setSelectedProduct: Dispatch<SetStateAction<string>>;
 }

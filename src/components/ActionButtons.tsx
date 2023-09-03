@@ -8,7 +8,7 @@ import useSums from "../hooks/useSums";
 import "../assets/actionButtons.css";
 
 const ActionButtons: React.FC = () => {
-  const { order } = useSumsContext();
+  const { order, setSelectedProduct } = useSumsContext();
 
   const containerDetails = useRef<HTMLDivElement>(null);
 
@@ -41,6 +41,7 @@ const ActionButtons: React.FC = () => {
     if (deleteSum) deleteAllSums();
     showMsg(emailStatusMsg, "");
     setEmail("");
+    setSelectedProduct("");
   };
 
   const updateScrollFocus = () => {
