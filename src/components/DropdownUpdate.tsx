@@ -30,8 +30,9 @@ const DropdownUpdate: React.FC<DropdownUpdateProps> = ({
   const handleAddOption = (event: ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
     event.stopPropagation();
+    if(!newOption.trim()) return;
     const lastElement = options.list[options.list.length - 1];
-    addOption(options.name, { concept: newOption, id: lastElement.id });
+    addOption(options.name, { concept: newOption.trim(), id: lastElement.id });
     setNewOption("");
   };
 
