@@ -1,7 +1,7 @@
 import React, { ChangeEvent, useState } from "react";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { BsPlusSquare } from "react-icons/bs";
-import { DropdownOptions } from "../types/sums.models";
+import { CATEGORIES, DropdownOptions } from "../types/sums.models";
 import OptionItem from "./OptionItem";
 import useOptions from "../hooks/useOptions";
 import "../assets/dropdownUpdate.css";
@@ -15,14 +15,13 @@ const DropdownUpdate: React.FC<DropdownUpdateProps> = ({
   options,
   modalOptions,
 }) => {
-
   const { addOption } = useOptions();
 
   const [newOption, setNewOption] = useState<string>("");
 
   const handleNewOptionChange = (event: ChangeEvent<HTMLInputElement>) => {
     setNewOption(event.target.value);
-  }
+  };
 
   const handleClose = () => {
     modalOptions.current?.removeAttribute("style");
@@ -32,9 +31,12 @@ const DropdownUpdate: React.FC<DropdownUpdateProps> = ({
     event.preventDefault();
     event.stopPropagation();
     const lastElement = options.list[options.list.length - 1];
-    addOption(options.name, {concept: newOption, id: lastElement.id});
+    addOption(options.name, { concept: newOption, id: lastElement.id });
     setNewOption("");
-  }
+  };
+
+  const nameCategory =
+    options.name === CATEGORIES.PRODUCTS ? "producto" : "condición de venta";
 
   return (
     <div className="container-set-options" ref={modalOptions}>
@@ -48,7 +50,12 @@ const DropdownUpdate: React.FC<DropdownUpdateProps> = ({
           <AiOutlineCloseCircle />
         </button>
         <form className="container-add-option" onSubmit={handleAddOption}>
-          <input type="text" placeholder="Crea tu producto" value={newOption} onChange={handleNewOptionChange} />
+          <input
+            type="text"
+            placeholder={`Crea tu ${nameCategory}`}
+            value={newOption}
+            onChange={handleNewOptionChange}
+          />
           <button type="submit" title="Crear producto">
             <BsPlusSquare />
           </button>
