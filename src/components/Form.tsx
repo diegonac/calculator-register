@@ -44,7 +44,7 @@ const Form: React.FC = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="form-sums">
       <label className="container-input-client">
         <span>Escribe el nombre de tu cliente</span>
         <input

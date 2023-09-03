@@ -1,10 +1,10 @@
 import React, { ChangeEvent, useState } from "react";
-import { DropdownOptions } from "../types/sums.models";
-import OptionItem from "./OptionItem";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { BsPlusSquare } from "react-icons/bs";
-import "../assets/dropdownUpdate.css";
+import { DropdownOptions } from "../types/sums.models";
+import OptionItem from "./OptionItem";
 import useOptions from "../hooks/useOptions";
+import "../assets/dropdownUpdate.css";
 
 interface DropdownUpdateProps {
   options: DropdownOptions;
@@ -28,7 +28,9 @@ const DropdownUpdate: React.FC<DropdownUpdateProps> = ({
     modalOptions.current?.removeAttribute("style");
   };
 
-  const handleAddOption = () => {
+  const handleAddOption = (event: ChangeEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    event.stopPropagation();
     const lastElement = options.list[options.list.length - 1];
     addOption(options.name, {concept: newOption, id: lastElement.id});
     setNewOption("");
@@ -45,12 +47,12 @@ const DropdownUpdate: React.FC<DropdownUpdateProps> = ({
         >
           <AiOutlineCloseCircle />
         </button>
-        <div className="container-add-option">
+        <form className="container-add-option" onSubmit={handleAddOption}>
           <input type="text" placeholder="Crea tu producto" value={newOption} onChange={handleNewOptionChange} />
-          <button type="button" title="Crear producto" onClick={handleAddOption}>
+          <button type="submit" title="Crear producto">
             <BsPlusSquare />
           </button>
-        </div>
+        </form>
         {options.list.map((option, index) => (
           <OptionItem option={option} category={options.name} key={index} />
         ))}

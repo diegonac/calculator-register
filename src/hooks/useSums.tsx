@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { SumsHook, Sum } from "../types/sums.models";
+import { Sum } from "../types/sums.models";
 import { showDate } from "../utils/dataUtils";
 import useSumsContext from "./useSumsContext";
 
@@ -60,3 +60,11 @@ const total = (sums: Sum[]): number => {
   });
   return resultado;
 };
+
+interface SumsHook {
+  addSum: (sum: Omit<Sum, "id">) => void;
+  removeSum: (sum: Sum) => void;
+  addAmount: (sum: Sum) => void;
+  removeAmount: (sum: Sum) => void;
+  deleteAllSums: () => void;
+}

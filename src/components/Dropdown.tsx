@@ -1,6 +1,7 @@
 import React, { ChangeEvent, useRef } from "react";
 import { DropdownOptions } from "../types/sums.models";
 import DropdownUpdate from "./DropdownUpdate";
+import Modal from "../modals/Modal";
 import { showDropdownMsg } from "../utils/dataUtils";
 import "../assets/dropdown.css";
 
@@ -57,7 +58,9 @@ const Dropdown: React.FC<DropdownProps> = ({
       <button type="button" title="Editar lista" className="button-set-list" onClick={handleSetList}>
         Editar lista
       </button>
-      <DropdownUpdate options={optionList} modalOptions={modalOptions} />
+      <Modal>
+        <DropdownUpdate options={optionList} modalOptions={modalOptions} />
+      </Modal>
     </div>
   );
 };

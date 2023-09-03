@@ -10,6 +10,8 @@ import "../assets/actionButtons.css";
 const ActionButtons: React.FC = () => {
   const { order } = useSumsContext();
 
+  const containerDetails = useRef<HTMLDivElement>(null);
+
   const { deleteAllSums } = useSums();
 
   const [email, setEmail] = useState<string>("");
@@ -22,11 +24,16 @@ const ActionButtons: React.FC = () => {
 
   const toggleShowDetails = () => {
     setShowDetails((prev) => !prev);
+    if(!showDetails) {
+      containerDetails.current?.setAttribute("style", "display: block");
+      updateScrollFocus();
+    } else {
+      containerDetails.current?.removeAttribute("style");
+    }
   };
 
   const handleDownloadPdf = () => {
-    const totalSum = order.total.toString();
-    generatePdf(order.sums, totalSum, order.saleCondition, order.client);
+    generatePdf(order);
   };
 
   const handleDeleteSum = () => {
@@ -34,6 +41,12 @@ const ActionButtons: React.FC = () => {
     if (deleteSum) deleteAllSums();
     showMsg(emailStatusMsg, "");
     setEmail("");
+  };
+
+  const updateScrollFocus = () => {
+    if (containerDetails.current) {
+      containerDetails.current.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   return (
@@ -45,7 +58,7 @@ const ActionButtons: React.FC = () => {
       >
         {showDetails ? "Ocultar detalle" : "Ver detalle"}
       </button>
-      {showDetails && <Details />}
+      <Details containerDetails={containerDetails} />
       <button title="PDF" type="button" onClick={handleDownloadPdf}>
         Descargar PDF
       </button>

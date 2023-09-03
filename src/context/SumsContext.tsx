@@ -6,7 +6,7 @@ import React, {
   useState,
 } from "react";
 import { productsDefault, saleConditionDefault, showDate } from "../utils/dataUtils";
-import { CATEGORIES, DropdownOptions, Sums } from "../types/sums.models";
+import { CATEGORIES, DropdownOptions, Order } from "../types/sums.models";
 
 const productsStorage: DropdownOptions | null = JSON.parse(localStorage.getItem(CATEGORIES.PRODUCTS) || "null");
 const saleConditionStorage: DropdownOptions | null = JSON.parse(localStorage.getItem(CATEGORIES.SALE_CONDITION) || "null");
@@ -50,14 +50,6 @@ export const SumsProvider: React.FC<SumsProviderProps> = ({ children }) => {
       {children}
     </SumsContext.Provider>
   );
-};
-
-type Order = {
-  date: string;
-  client: string;
-  saleCondition: string;
-  sums: [] | Sums;
-  total: number;
 };
 
 interface ISumsContext {

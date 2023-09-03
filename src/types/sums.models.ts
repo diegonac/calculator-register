@@ -1,31 +1,25 @@
-import { Dispatch, SetStateAction } from "react";
-
-export type SumType = number;
-
 export type Sum = {
   id: number;
-  amount: SumType;
+  amount: number;
   price: string;
   product: string;
 };
 
-export interface SumsHook {
-  addSum: (sum: Omit<Sum, "id">) => void;
-  removeSum: (sum: Sum) => void;
-  addAmount: (sum: Sum) => void;
-  removeAmount: (sum: Sum) => void;
-  deleteAllSums: () => void;
-}
-
 export type Sums = Sum[];
 
-export type SetSumsProps = Dispatch<SetStateAction<Sums>>;
+export type Order = {
+  date: string;
+  client: string;
+  saleCondition: string;
+  sums: [] | Sums;
+  total: number;
+};
 
 export interface DropdownMsg {
   [key: string]: string;
 }
 
-export type Option = {concept: string, id: number};
+export type Option = { concept: string; id: number };
 
 export interface DropdownOptions {
   name: string;
@@ -43,7 +37,7 @@ export interface BodyDocDefinition {
 }
 
 export interface BodySendEmail extends BodyDocDefinition {
-  email: string,
+  email: string;
 }
 
 export enum CATEGORIES {

@@ -14,8 +14,8 @@
 
 .container-list-options {
   overflow-y: auto;
-  border: 1px solid #646cff;
-  border-radius: 15px;
+  border: 2px solid #646cff;
+  border-radius: 10px;
   height: 70%;
   width: 70%;
   min-width: 320px;
@@ -47,6 +47,7 @@
 .container-add-option input {
   border: none;
   background: none;
+  padding: 5px;
   border-bottom: 1px solid #646cff;
   border-radius: 5px;
 }

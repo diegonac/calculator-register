@@ -1,15 +1,15 @@
-form {
+.form-sums {
   display: flex;
   flex-direction: column;
   width: 70%;
   max-width: 500px;
 }
 
-form > * {
+.form-sums > * {
   margin: 15px 0;
 }
 
-form input {
+.form-sums input {
   height: 30px;
   border-style: solid;
 }

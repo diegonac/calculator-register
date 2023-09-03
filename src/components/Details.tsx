@@ -4,11 +4,15 @@ import Items from "./Items";
 import useSumsContext from "../hooks/useSumsContext";
 import "../assets/details.css";
 
-const Details: React.FC = () => {
+interface DetailsProps {
+  containerDetails: React.RefObject<HTMLDivElement>;
+}
+
+const Details: React.FC<DetailsProps> = ({ containerDetails }) => {
   const {order} = useSumsContext();
   if (order.sums.length > 0) {
     return (
-      <div id="container-details">
+      <div id="container-details" ref={containerDetails}>
         <h2>Detalle</h2>
         <p>Cliente: {capitalizeWords(order.client)}</p>
         <p>Condición de la venta: {order.saleCondition.toLowerCase()}</p>
