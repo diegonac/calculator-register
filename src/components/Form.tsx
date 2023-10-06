@@ -4,7 +4,6 @@ import Dropdown from "./Dropdown";
 import Sum from "./Sum";
 import useSums from "../hooks/useSums";
 import useSumsContext from "../hooks/useSumsContext";
-import "../assets/form.css";
 
 const Form: React.FC = () => {
   const {

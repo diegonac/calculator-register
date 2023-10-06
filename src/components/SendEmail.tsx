@@ -4,7 +4,6 @@ import sendPDFService from "../services/sendPDF.service";
 import { prepareBody, showMsg } from "../utils/dataUtils";
 import { validateEmail } from "../utils/validationUtils";
 import useSumsContext from "../hooks/useSumsContext";
-import "../assets/sendEmail.css"
 
 const service = new sendPDFService();
 

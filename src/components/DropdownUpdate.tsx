@@ -4,7 +4,6 @@ import { BsPlusSquare } from "react-icons/bs";
 import { CATEGORIES, DropdownOptions } from "../types/sums.models";
 import OptionItem from "./OptionItem";
 import useOptions from "../hooks/useOptions";
-import "../assets/dropdownUpdate.css";
 
 interface DropdownUpdateProps {
   options: DropdownOptions;

@@ -1,5 +1,4 @@
 import React, { ChangeEvent } from "react";
-import "../assets/sum.css";
 
 interface FormProps {
   value: string;

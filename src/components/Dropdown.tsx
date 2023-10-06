@@ -3,7 +3,6 @@ import { DropdownOptions } from "../types/sums.models";
 import DropdownUpdate from "./DropdownUpdate";
 import Modal from "../modals/Modal";
 import { showDropdownMsg } from "../utils/dataUtils";
-import "../assets/dropdown.css";
 
 interface DropdownProps {
   selectedOption: string;

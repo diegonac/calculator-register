@@ -5,7 +5,6 @@ import { showMsg } from "../utils/dataUtils";
 import SendEmail from "./SendEmail";
 import useSumsContext from "../hooks/useSumsContext";
 import useSums from "../hooks/useSums";
-import "../assets/actionButtons.css";
 
 const ActionButtons: React.FC = () => {
   const { order, setSelectedProduct } = useSumsContext();

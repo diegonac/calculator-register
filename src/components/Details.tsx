@@ -2,7 +2,6 @@ import React from "react";
 import { capitalizeWords } from "../utils/dataUtils";
 import Items from "./Items";
 import useSumsContext from "../hooks/useSumsContext";
-import "../assets/details.css";
 
 interface DetailsProps {
   containerDetails: React.RefObject<HTMLDivElement>;

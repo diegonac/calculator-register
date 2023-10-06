@@ -2,7 +2,6 @@ import React from "react";
 import { Option } from "../types/sums.models";
 import { BsTrash3 } from "react-icons/bs";
 import useOptions from "../hooks/useOptions";
-import "../assets/dropdownUpdate.css";
 
 interface OptionItemProps {
   option: Option;

@@ -1,6 +1,5 @@
 import React, { useRef, ChangeEvent, Dispatch, SetStateAction } from "react";
 import { AiOutlineMinusCircle, AiOutlinePlusCircle } from "react-icons/ai";
-import "../assets/amount.css";
 
 interface AmountProps {
   value: number;
