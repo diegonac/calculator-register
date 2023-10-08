@@ -4,6 +4,7 @@ import Dropdown from "./Dropdown";
 import Sum from "./Sum";
 import useSums from "../hooks/useSums";
 import useSumsContext from "../hooks/useSumsContext";
+import myUtilities from "../utils/tw.styles";
 
 const Form: React.FC = () => {
   const {
@@ -49,16 +50,20 @@ const Form: React.FC = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="form-sums">
-      <label className="container-input-client">
-        <span>Escribe el nombre de tu cliente</span>
+    <form onSubmit={handleSubmit} className="w-3/4 max-w-500 min-w-240">
+      <div className={myUtilities.containerInput}>
         <input
+          className={myUtilities.input}
+          placeholder=" "
           type="text"
           name="name"
           value={order.client}
           onChange={handleClientChange}
         />
-      </label>
+        <label className={myUtilities.label}>
+          Nombre de tu cliente
+        </label>
+      </div>
       <Dropdown
         selectedOption={order.saleCondition}
         onChange={handleSaleConditionChange}
@@ -71,7 +76,7 @@ const Form: React.FC = () => {
       />
       <Sum value={price} onChange={handlePriceChange} sumInput={sumInput} />
       <Amount value={amount} setValue={setAmount} />
-      <button type="submit">Sumar</button>
+      <button className={myUtilities.button} type="submit">Sumar</button>
     </form>
   );
 };

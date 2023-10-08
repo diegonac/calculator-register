@@ -31,13 +31,14 @@ const Amount:React.FC<AmountProps> = ({ value, setValue }) => {
     amountRef.current?.select();
   };
   return (
-    <div className="container-units">
-      <span>Unidades:</span>
-      <div>
-        <button title="Quitar unidad" type="button" onClick={removeAmount}>
+    <div>
+      <span className="block text-center">Unidades</span>
+      <div className="flex justify-center">
+        <button className="w-11 flex justify-center items-center" title="Quitar unidad" type="button" onClick={removeAmount}>
           <AiOutlineMinusCircle />
         </button>
         <input
+          className="py-2.5 px-0 text-sm text-gray-900 text-center w-8 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
           type="number"
           name="amount"
           value={value ? value : ""}
@@ -46,7 +47,7 @@ const Amount:React.FC<AmountProps> = ({ value, setValue }) => {
           onBlur={resetAmount}
           ref={amountRef}
         />
-        <button title="Aumentar unidad" type="button" onClick={addAmount}>
+        <button className="w-11 flex justify-center items-center" title="Aumentar unidad" type="button" onClick={addAmount}>
           <AiOutlinePlusCircle />
         </button>
       </div>

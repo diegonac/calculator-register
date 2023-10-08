@@ -7,10 +7,10 @@ const Layout: React.FC = () => {
   const {order} = useSumsContext();
 
   return (
-    <main>
-      <h1 className="text-blue-700">Calculadora registradora</h1>
+    <main className="flex flex-col items-center min-h-screen min-w-320">
+      <h1 className="my-6 text-2xl">Calculadora registradora</h1>
       <Form />
-      <h2 className="total-main">Total: ${order.total}</h2>
+      <h2 className="text-2xl">Total: ${order.total}</h2>
       {order.sums.length > 0 && (
         <ActionButtons />
       )}

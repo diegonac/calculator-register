@@ -51,8 +51,8 @@ export const saleConditionDefault: DropdownOptions = {
 };
 
 export const dropdownMsgOptions: DropdownMsg = {
-  products: "Elige un producto",
-  saleCondition: "Elige la condición de la venta",
+  products: "Producto",
+  saleCondition: "Condición de la venta",
 };
 
 export const showDropdownMsg = (option: string): string => {

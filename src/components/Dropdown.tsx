@@ -3,6 +3,7 @@ import { DropdownOptions } from "../types/sums.models";
 import DropdownUpdate from "./DropdownUpdate";
 import Modal from "../modals/Modal";
 import { showDropdownMsg } from "../utils/dataUtils";
+import myUtilities from "../utils/tw.styles";
 
 interface DropdownProps {
   selectedOption: string;
@@ -31,30 +32,36 @@ const Dropdown: React.FC<DropdownProps> = ({
   };
 
   const handleSetList = () => {
-    modalOptions.current?.setAttribute("style", "display: flex;")
-  }
+    modalOptions.current?.setAttribute("style", "display: flex;");
+  };
 
   return (
-    <div>
-      <div
-        className={"contain-dropdown " + optionList.name}
-        ref={containDropdown}
-      >
-        <span>{showDropdownMsg(optionList.name)}</span>
+    <div className="mb-6 relative">
+      <div ref={containDropdown}>
+        <label className="sr-only">Underline Select</label>
         <select
           value={selectedOption}
           onChange={handleOptionChange}
           onClick={updateScrollFocus}
+          className={myUtilities.select}
         >
-          <option value="">Selecciona una opción</option>
+          <option selected>{showDropdownMsg(optionList.name)}</option>
           {optionList.list.map((item, index) => (
             <option key={index} value={item.concept}>
               {item.concept}
             </option>
           ))}
         </select>
+        <div className={myUtilities.arounds.container}>
+          <div className={myUtilities.arounds.children}></div>
+        </div>
       </div>
-      <button type="button" title="Editar lista" className="button-set-list" onClick={handleSetList}>
+      <button
+        type="button"
+        title="Editar lista"
+        className={myUtilities.buttonSecondary}
+        onClick={handleSetList}
+      >
         Editar lista
       </button>
       <Modal>

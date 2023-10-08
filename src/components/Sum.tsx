@@ -1,4 +1,5 @@
 import React, { ChangeEvent } from "react";
+import myUtilities from "../utils/tw.styles";
 
 interface FormProps {
   value: string;
@@ -7,7 +8,6 @@ interface FormProps {
 }
 
 const Sum: React.FC<FormProps> = ({ value, onChange, sumInput }) => {
-  
   const updateScrollFocus = () => {
     setTimeout(() => {
       const dropdownProduct = document.querySelector(".products");
@@ -18,8 +18,7 @@ const Sum: React.FC<FormProps> = ({ value, onChange, sumInput }) => {
   };
 
   return (
-    <label className="container-sum">
-      <span>Escribe tu suma</span>
+    <div className={myUtilities.containerInput}>
       <input
         type="number"
         name="number"
@@ -28,9 +27,13 @@ const Sum: React.FC<FormProps> = ({ value, onChange, sumInput }) => {
         onFocus={updateScrollFocus}
         onClick={updateScrollFocus}
         onChange={onChange}
-        className="input-sum"
+        className={myUtilities.input}
+        placeholder=" "
       />
-    </label>
+      <label className={myUtilities.label}>
+        Suma
+      </label>
+    </div>
   );
 };
 

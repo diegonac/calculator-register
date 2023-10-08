@@ -39,7 +39,7 @@ const DropdownUpdate: React.FC<DropdownUpdateProps> = ({
     options.name === CATEGORIES.PRODUCTS ? "producto" : "condición de venta";
 
   return (
-    <div className="container-set-options" ref={modalOptions}>
+    <div className="hidden" ref={modalOptions}>
       <div className="container-list-options">
         <button
           type="button"
