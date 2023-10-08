@@ -14,12 +14,12 @@ const OptionItem: React.FC<OptionItemProps> = ({ option, category }) => {
     removeOption(category, option.id);
   }
   return (
-    <div className="container-option-item">
+    <div className="flex justify-between pb-3 mx-6 my-6 border-b border-gray-600 dark:border-gray-300">
       <p>{option.concept}</p>
       <button
         type="button"
         title="Eliminar opción"
-        className="button-delete-option"
+        className="text-red-700"
         onClick={handleRemoveOption}
       >
         <BsTrash3 />

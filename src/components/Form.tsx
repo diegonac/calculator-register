@@ -50,7 +50,7 @@ const Form: React.FC = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="w-3/4 max-w-500 min-w-240">
+    <form onSubmit={handleSubmit} className="w-11/12 md:w-3/4 max-w-500 min-w-240">
       <div className={myUtilities.containerInput}>
         <input
           className={myUtilities.input}

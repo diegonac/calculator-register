@@ -4,6 +4,7 @@ import sendPDFService from "../services/sendPDF.service";
 import { prepareBody, showMsg } from "../utils/dataUtils";
 import { validateEmail } from "../utils/validationUtils";
 import useSumsContext from "../hooks/useSumsContext";
+import myUtilities from "../utils/tw.styles";
 
 const service = new sendPDFService();
 
@@ -13,7 +14,11 @@ interface SendEmailProps {
   emailStatusMsg: React.RefObject<HTMLParagraphElement>;
 }
 
-const SendEmail: React.FC<SendEmailProps> = ({ email, onChange, emailStatusMsg, }) => {
+const SendEmail: React.FC<SendEmailProps> = ({
+  email,
+  onChange,
+  emailStatusMsg,
+}) => {
   const { order } = useSumsContext();
 
   const handleSendPdf = async () => {
@@ -44,17 +49,28 @@ const SendEmail: React.FC<SendEmailProps> = ({ email, onChange, emailStatusMsg, 
 
   return (
     <>
-      <h3>¿Quiere enviar el detalle al cliente?</h3>
-      <span>Ingrese el email del cliente</span>
-      <input
-        type="email"
-        name="email"
-        id="email-client"
-        value={email}
-        onChange={onChange}
-      />
-      <p ref={emailStatusMsg}></p>
-      <button title="PDF" type="button" onClick={handleSendPdf}>
+      <h3 className="text-lg my-6">¿Quiere enviar el detalle al cliente?</h3>
+      <div className={myUtilities.containerInput}>
+        <input
+          className={myUtilities.input}
+          placeholder=" "
+          type="email"
+          name="email"
+          id="email-client"
+          value={email}
+          onChange={onChange}
+        />
+        <label className={myUtilities.label}>
+          Ingrese el email del cliente
+        </label>
+      </div>
+      <p className="self-start text-sm" ref={emailStatusMsg}></p>
+      <button
+        className={myUtilities.button + " mb-10"}
+        title="PDF"
+        type="button"
+        onClick={handleSendPdf}
+      >
         Enviar PDF
       </button>
     </>

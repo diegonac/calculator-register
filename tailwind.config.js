@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./src/components/**/*.{js,jsx,ts,tsx}"],
+  content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
       maxWidth: {
@@ -9,6 +9,9 @@ export default {
       minWidth: {
         "240": "240px",
         "320": "320px"
+      },
+      gridTemplateColumns: {
+        "details": "repeat(4, 1fr) max-content"
       }
     },
   },

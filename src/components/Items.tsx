@@ -28,7 +28,7 @@ const Items: React.FC<ItemsProps> = ({ sum }) => {
       <p>{sum.product}</p>
       <p>{sum.price}</p>
 
-      <div className="container-item__amount">
+      <div className="flex justify-center gap-2 w-full">
         <button
           title="Eliminar unidad"
           type="button"
@@ -42,7 +42,6 @@ const Items: React.FC<ItemsProps> = ({ sum }) => {
           title="Agregar unidad"
           type="button"
           onClick={handleAddAmount}
-          className="button-unit__add"
         >
           <AiOutlinePlusCircle />
         </button>
@@ -53,7 +52,7 @@ const Items: React.FC<ItemsProps> = ({ sum }) => {
       <button
         title="Eliminar suma"
         type="button"
-        className="container-item__delete-sum"
+        className="text-red-700"
         onClick={handleDelete}
       >
         <BsTrash3 />

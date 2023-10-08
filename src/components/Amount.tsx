@@ -38,7 +38,7 @@ const Amount:React.FC<AmountProps> = ({ value, setValue }) => {
           <AiOutlineMinusCircle />
         </button>
         <input
-          className="py-2.5 px-0 text-sm text-gray-900 text-center w-8 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+          className="py-2.5 px-0 text-sm text-gray-900 text-center w-8 bg-transparent border-0 border-b-2 border-gray-500 appearance-none dark:text-white dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
           type="number"
           name="amount"
           value={value ? value : ""}

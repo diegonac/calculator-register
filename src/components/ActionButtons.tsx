@@ -5,6 +5,7 @@ import { showMsg } from "../utils/dataUtils";
 import SendEmail from "./SendEmail";
 import useSumsContext from "../hooks/useSumsContext";
 import useSums from "../hooks/useSums";
+import myUtilities from "../utils/tw.styles";
 
 const ActionButtons: React.FC = () => {
   const { order, setSelectedProduct } = useSumsContext();
@@ -50,8 +51,9 @@ const ActionButtons: React.FC = () => {
   };
 
   return (
-    <div className="container-buttons-layout">
+    <div className="w-11/12 md:w-3/4 max-w-500 min-w-240 flex flex-col items-center">
       <button
+        className={myUtilities.button}
         title={showDetails ? "Ocultar detalle" : "Ver detalle"}
         type="button"
         onClick={toggleShowDetails}
@@ -59,10 +61,10 @@ const ActionButtons: React.FC = () => {
         {showDetails ? "Ocultar detalle" : "Ver detalle"}
       </button>
       <Details containerDetails={containerDetails} />
-      <button title="PDF" type="button" onClick={handleDownloadPdf}>
+      <button className={myUtilities.button} title="PDF" type="button" onClick={handleDownloadPdf}>
         Descargar PDF
       </button>
-      <button title="Eliminar suma" type="button" onClick={handleDeleteSum}>
+      <button className={myUtilities.button} title="Eliminar suma" type="button" onClick={handleDeleteSum}>
         Eliminar suma
       </button>
       <SendEmail email={email} onChange={handleChangeEmail} emailStatusMsg={emailStatusMsg} />

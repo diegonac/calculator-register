@@ -11,11 +11,11 @@ const Details: React.FC<DetailsProps> = ({ containerDetails }) => {
   const {order} = useSumsContext();
   if (order.sums.length > 0) {
     return (
-      <div id="container-details" ref={containerDetails}>
-        <h2>Detalle</h2>
-        <p>Cliente: {capitalizeWords(order.client)}</p>
-        <p>Condición de la venta: {order.saleCondition.toLowerCase()}</p>
-        <div className="container-items">
+      <div className="w-full hidden" ref={containerDetails}>
+        <h2 className="text-2xl my-4">Detalle</h2>
+        <p className="my-4">Cliente: {capitalizeWords(order.client)}</p>
+        <p className="my-4">Condición de la venta: {order.saleCondition.toLowerCase()}</p>
+        <div className="grid grid-cols-details place-items-center my-4 gap-y-6">
             <h3>Producto</h3>
             <h3>Precio</h3>
             <h3>Cantidad</h3>
@@ -31,7 +31,7 @@ const Details: React.FC<DetailsProps> = ({ containerDetails }) => {
               </React.Fragment>
             ))}
         </div>
-        <h2>Total: ${order.total}</h2>
+        <h2 className="text-2xl my-4">Total: ${order.total}</h2>
       </div>
     );
   }
