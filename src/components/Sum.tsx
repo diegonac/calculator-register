@@ -29,6 +29,7 @@ const Sum: React.FC<FormProps> = ({ value, onChange, sumInput }) => {
         onChange={onChange}
         className={myUtilities.input}
         placeholder=" "
+        id="sum-input"
       />
       <label className={myUtilities.label}>
         Suma

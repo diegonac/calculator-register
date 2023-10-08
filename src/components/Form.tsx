@@ -68,11 +68,13 @@ const Form: React.FC = () => {
         selectedOption={order.saleCondition}
         onChange={handleSaleConditionChange}
         optionList={saleConditionOptions}
+        
       />
       <Dropdown
         selectedOption={selectedProduct}
         onChange={handleProductChange}
         optionList={productsOptions}
+        sumInput={sumInput}
       />
       <Sum value={price} onChange={handlePriceChange} sumInput={sumInput} />
       <Amount value={amount} setValue={setAmount} />

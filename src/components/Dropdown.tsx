@@ -9,20 +9,21 @@ interface DropdownProps {
   selectedOption: string;
   onChange: (event: ChangeEvent<HTMLSelectElement>) => void;
   optionList: DropdownOptions;
+  sumInput?: React.RefObject<HTMLInputElement>;
 }
 
 const Dropdown: React.FC<DropdownProps> = ({
   selectedOption,
   onChange,
   optionList,
+  sumInput
 }) => {
   const containDropdown = useRef<HTMLDivElement>(null);
   const modalOptions = useRef<HTMLDivElement>(null);
 
   const handleOptionChange = (event: ChangeEvent<HTMLSelectElement>) => {
     onChange(event);
-    const inputSum = document.querySelector<HTMLInputElement>(".input-sum");
-    if (inputSum && optionList.name === "products") inputSum.focus();
+    if (sumInput?.current && optionList.name === "products") sumInput.current.focus();
   };
 
   const updateScrollFocus = () => {
@@ -46,7 +47,7 @@ const Dropdown: React.FC<DropdownProps> = ({
           onClick={updateScrollFocus}
           className={myUtilities.select}
         >
-          <option selected>{showDropdownMsg(optionList.name)}</option>
+          <option value="">{showDropdownMsg(optionList.name)}</option>
           {optionList.list.map((item, index) => (
             <option key={index} value={item.concept}>
               {item.concept}
