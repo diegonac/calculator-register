@@ -34,7 +34,7 @@ const Dropdown: React.FC<DropdownProps> = ({
 
   const handleSetList = () => {
     modalOptions.current?.setAttribute("style", "display: flex;");
-    document.getElementById("root")?.setAttribute("style", "position: fixed");
+    document.getElementById("root")?.setAttribute("style", "position: fixed; width: 100%;");
   };
 
   return (
