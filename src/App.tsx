@@ -1,13 +1,8 @@
 import React from "react";
-import Layout from "./components/Layout";
-import { SumsProvider } from "./context/SumsContext";
+import AppRouter from "./router/AppRouter";
 
 const App: React.FC = () => {
-  return (
-    <SumsProvider>
-      <Layout />
-    </SumsProvider>
-  );
+  return <AppRouter />
 }
 
 export default App;

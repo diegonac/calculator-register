@@ -1,7 +1,6 @@
 import React, { ChangeEvent, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import { DropdownOptions } from "../types/sums.models";
-import DropdownUpdate from "./DropdownUpdate";
-import Modal from "../modals/Modal";
 import { showDropdownMsg } from "../utils/dataUtils";
 import myUtilities from "../utils/tw.styles";
 
@@ -16,14 +15,16 @@ const Dropdown: React.FC<DropdownProps> = ({
   selectedOption,
   onChange,
   optionList,
-  sumInput
+  sumInput,
 }) => {
   const containDropdown = useRef<HTMLDivElement>(null);
-  const modalOptions = useRef<HTMLDivElement>(null);
+
+  const navigate = useNavigate();
 
   const handleOptionChange = (event: ChangeEvent<HTMLSelectElement>) => {
     onChange(event);
-    if (sumInput?.current && optionList.name === "products") sumInput.current.focus();
+    if (sumInput?.current && optionList.name === "products")
+      sumInput.current.focus();
   };
 
   const updateScrollFocus = () => {
@@ -33,8 +34,9 @@ const Dropdown: React.FC<DropdownProps> = ({
   };
 
   const handleSetList = () => {
-    modalOptions.current?.setAttribute("style", "display: flex;");
-    document.getElementById("root")?.setAttribute("style", "position: fixed; width: 100%;");
+    optionList.name === "products"
+      ? navigate("/update-products")
+      : navigate("update-sale-condition");
   };
 
   return (
@@ -66,9 +68,6 @@ const Dropdown: React.FC<DropdownProps> = ({
       >
         Editar lista
       </button>
-      <Modal>
-        <DropdownUpdate options={optionList} modalOptions={modalOptions} />
-      </Modal>
     </div>
   );
 };

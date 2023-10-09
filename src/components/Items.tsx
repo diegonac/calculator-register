@@ -25,7 +25,7 @@ const Items: React.FC<ItemsProps> = ({ sum }) => {
   };
   return (
     <>
-      <p>{sum.product}</p>
+      <p className="text-center">{sum.product}</p>
       <p>{sum.price}</p>
 
       <div className="flex justify-center gap-2 w-full">

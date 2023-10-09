@@ -49,7 +49,7 @@ const SendEmail: React.FC<SendEmailProps> = ({
 
   return (
     <>
-      <h3 className="text-lg my-6">¿Quiere enviar el detalle al cliente?</h3>
+      <h3 className="text-lg my-6 font-medium">¿Quiere enviar el detalle al cliente?</h3>
       <div className={myUtilities.containerInput}>
         <input
           className={myUtilities.input}
