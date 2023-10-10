@@ -39,6 +39,15 @@ const Form: React.FC = () => {
     setPrice(event.target.value);
   };
 
+  const scrollProductDropdown = () => {
+    setTimeout(() => {
+      const dropdownProduct = document.querySelector(".product-dropdown");
+      if (dropdownProduct) {
+        dropdownProduct.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 250);
+  };
+
   const handleSubmit = (event: ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (sumInput.current?.value) {
@@ -50,7 +59,10 @@ const Form: React.FC = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="w-11/12 md:w-3/4 max-w-500 min-w-240">
+    <form
+      onSubmit={handleSubmit}
+      className="w-11/12 md:w-3/4 max-w-500 min-w-240"
+    >
       <div className={myUtilities.containerInput}>
         <input
           className={myUtilities.input}
@@ -60,25 +72,34 @@ const Form: React.FC = () => {
           value={order.client}
           onChange={handleClientChange}
         />
-        <label className={myUtilities.label}>
-          Nombre de tu cliente
-        </label>
+        <label className={myUtilities.label}>Nombre de tu cliente</label>
       </div>
       <Dropdown
         selectedOption={order.saleCondition}
         onChange={handleSaleConditionChange}
         optionList={saleConditionOptions}
-        
       />
       <Dropdown
         selectedOption={selectedProduct}
         onChange={handleProductChange}
         optionList={productsOptions}
         sumInput={sumInput}
+        scrollProductDropdown={scrollProductDropdown}
       />
-      <Sum value={price} onChange={handlePriceChange} sumInput={sumInput} />
+      <Sum
+        value={price}
+        onChange={handlePriceChange}
+        sumInput={sumInput}
+        scrollProductDropdown={scrollProductDropdown}
+      />
       <Amount value={amount} setValue={setAmount} />
-      <button className={myUtilities.button} type="submit">Sumar</button>
+      <button
+        className={myUtilities.button}
+        type="submit"
+        onClick={scrollProductDropdown}
+      >
+        Sumar
+      </button>
     </form>
   );
 };

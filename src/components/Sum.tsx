@@ -5,17 +5,10 @@ interface FormProps {
   value: string;
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
   sumInput: React.RefObject<HTMLInputElement>;
+  scrollProductDropdown: () => void;
 }
 
-const Sum: React.FC<FormProps> = ({ value, onChange, sumInput }) => {
-  const updateScrollFocus = () => {
-    setTimeout(() => {
-      const dropdownProduct = document.querySelector(".products");
-      if (dropdownProduct) {
-        dropdownProduct.scrollIntoView({ behavior: "smooth" });
-      }
-    }, 500);
-  };
+const Sum: React.FC<FormProps> = ({ value, onChange, sumInput, scrollProductDropdown }) => {
 
   return (
     <div className={myUtilities.containerInput}>
@@ -24,8 +17,8 @@ const Sum: React.FC<FormProps> = ({ value, onChange, sumInput }) => {
         name="number"
         ref={sumInput}
         value={value}
-        onFocus={updateScrollFocus}
-        onClick={updateScrollFocus}
+        onFocus={scrollProductDropdown}
+        onClick={scrollProductDropdown}
         onChange={onChange}
         className={myUtilities.input}
         placeholder=" "

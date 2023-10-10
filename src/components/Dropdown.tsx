@@ -8,6 +8,7 @@ interface DropdownProps {
   selectedOption: string;
   onChange: (event: ChangeEvent<HTMLSelectElement>) => void;
   optionList: DropdownOptions;
+  scrollProductDropdown?: () => void;
   sumInput?: React.RefObject<HTMLInputElement>;
 }
 
@@ -15,6 +16,7 @@ const Dropdown: React.FC<DropdownProps> = ({
   selectedOption,
   onChange,
   optionList,
+  scrollProductDropdown,
   sumInput,
 }) => {
   const containDropdown = useRef<HTMLDivElement>(null);
@@ -23,8 +25,14 @@ const Dropdown: React.FC<DropdownProps> = ({
 
   const handleOptionChange = (event: ChangeEvent<HTMLSelectElement>) => {
     onChange(event);
-    if (sumInput?.current && optionList.name === "products")
+    if (
+      sumInput?.current &&
+      optionList.name === "products" &&
+      scrollProductDropdown
+    ) {
+      scrollProductDropdown();
       sumInput.current.focus();
+    }
   };
 
   const updateScrollFocus = () => {
@@ -41,7 +49,12 @@ const Dropdown: React.FC<DropdownProps> = ({
 
   return (
     <div className="mb-6 relative">
-      <div ref={containDropdown}>
+      <div
+        ref={containDropdown}
+        className={
+          optionList.name === "products" ? "product-dropdown" : undefined
+        }
+      >
         <label className="sr-only">Underline Select</label>
         <select
           value={selectedOption}
