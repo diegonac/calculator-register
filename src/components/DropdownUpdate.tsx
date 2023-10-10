@@ -43,7 +43,7 @@ const DropdownUpdate: React.FC<DropdownUpdateProps> = ({ options }) => {
       : "Condiciones de venta";
 
   return (
-    <div className="mx-auto max-w-500 bg-slate-200 dark:bg-neutral-800">
+    <div className="mx-auto max-w-500 bg-slate-200 dark:bg-neutral-800" data-aos="fade-right">
       <div className="flex items-center mx-6 my-4">
         <button
           title="Volver atrás"
@@ -68,7 +68,7 @@ const DropdownUpdate: React.FC<DropdownUpdateProps> = ({ options }) => {
           />
           <label className={myUtilities.label}>{`Crear ${nameCategory}`}</label>
         </div>
-        <button type="submit" title={`Crear ${nameCategory}`}>
+        <button className="rounded-full h-max p-2 my-auto hover:bg-slate-400 hover:bg-opacity-20" type="submit" title={`Crear ${nameCategory}`}>
           <BsPlusLg />
         </button>
       </form>

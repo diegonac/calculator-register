@@ -19,7 +19,7 @@ const OptionItem: React.FC<OptionItemProps> = ({ option, category }) => {
       <button
         type="button"
         title="Eliminar opción"
-        className="text-red-700"
+        className="rounded-full p-2 hover:bg-red-400 hover:bg-opacity-10 text-red-700"
         onClick={handleRemoveOption}
       >
         <BsTrash3 />

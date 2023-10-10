@@ -33,7 +33,7 @@ const Items: React.FC<ItemsProps> = ({ sum }) => {
           title="Eliminar unidad"
           type="button"
           onClick={handleRemoveAmount}
-          className="button-unit__remove"
+          className="rounded-full md:p-1 hover:bg-slate-400 hover:bg-opacity-10"
         >
           <AiOutlineMinusCircle />
         </button>
@@ -42,6 +42,7 @@ const Items: React.FC<ItemsProps> = ({ sum }) => {
           title="Agregar unidad"
           type="button"
           onClick={handleAddAmount}
+          className="rounded-full md:p-1 hover:bg-slate-400 hover:bg-opacity-10"
         >
           <AiOutlinePlusCircle />
         </button>
@@ -52,7 +53,7 @@ const Items: React.FC<ItemsProps> = ({ sum }) => {
       <button
         title="Eliminar suma"
         type="button"
-        className="text-red-700"
+        className="rounded-full md:p-1 hover:bg-red-400 hover:bg-opacity-10 text-red-700"
         onClick={handleDelete}
       >
         <BsTrash3 />

@@ -17,7 +17,7 @@ const Layout: React.FC = () => {
   }
 
   return (
-    <main className="flex flex-col items-center min-h-screen min-w-320">
+    <main className="flex flex-col items-center min-h-screen min-w-320" data-aos="fade-down">
       <h1 className="my-6 text-2xl font-bold">Calculadora registradora</h1>
       <Form />
       <h2 className="text-2xl w-11/12 md:w-3/4 max-w-500 font-semibold">Total: ${order.total}</h2>
