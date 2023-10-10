@@ -17,6 +17,10 @@
     -moz-appearance: textfield;
   }
 
+  button {
+    -webkit-tap-highlight-color: transparent; 
+  }
+
 }
 
 ::-webkit-scrollbar {

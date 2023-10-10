@@ -68,7 +68,7 @@ const DropdownUpdate: React.FC<DropdownUpdateProps> = ({ options }) => {
           />
           <label className={myUtilities.label}>{`Crear ${nameCategory}`}</label>
         </div>
-        <button className="rounded-full h-max p-2 my-auto hover:bg-slate-400 hover:bg-opacity-20" type="submit" title={`Crear ${nameCategory}`}>
+        <button className="rounded-full h-max p-2 my-auto hover-bt active:bg-slate-400 active:bg-opacity-20" type="submit" title={`Crear ${nameCategory}`}>
           <BsPlusLg />
         </button>
       </form>

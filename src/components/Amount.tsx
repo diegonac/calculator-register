@@ -34,7 +34,7 @@ const Amount:React.FC<AmountProps> = ({ value, setValue }) => {
     <div>
       <span className="block text-center">Unidades</span>
       <div className="flex justify-center">
-        <button className="w-11 flex justify-center items-center rounded-full md:p-1 hover:bg-slate-400 hover:bg-opacity-10" title="Quitar unidad" type="button" onClick={removeAmount}>
+        <button className="w-11 flex justify-center items-center rounded-full md:p-1 hover-bt active:bg-slate-400 active:bg-opacity-10" title="Quitar unidad" type="button" onClick={removeAmount}>
           <AiOutlineMinusCircle />
         </button>
         <input
@@ -47,7 +47,7 @@ const Amount:React.FC<AmountProps> = ({ value, setValue }) => {
           onBlur={resetAmount}
           ref={amountRef}
         />
-        <button className="w-11 flex justify-center items-center rounded-full md:p-1 hover:bg-slate-400 hover:bg-opacity-10" title="Aumentar unidad" type="button" onClick={addAmount}>
+        <button className="w-11 flex justify-center items-center rounded-full md:p-1 hover-bt active:bg-slate-500 active:bg-opacity-10" title="Aumentar unidad" type="button" onClick={addAmount}>
           <AiOutlinePlusCircle />
         </button>
       </div>
