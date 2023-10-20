@@ -15,6 +15,8 @@ const Sum: React.FC<FormProps> = ({ value, onChange, sumInput, scrollProductDrop
       <input
         type="number"
         name="number"
+        step="any"
+        min="0"
         ref={sumInput}
         value={value}
         onFocus={scrollProductDropdown}

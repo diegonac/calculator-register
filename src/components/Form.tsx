@@ -5,6 +5,7 @@ import Sum from "./Sum";
 import useSums from "../hooks/useSums";
 import useSumsContext from "../hooks/useSumsContext";
 import myUtilities from "../utils/tw.styles";
+import { parsePrice } from "../utils/dataUtils";
 
 const Form: React.FC = () => {
   const {
@@ -51,7 +52,7 @@ const Form: React.FC = () => {
   const handleSubmit = (event: ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (sumInput.current?.value) {
-      addSum({ price, amount, product: selectedProduct });
+      addSum({ price: parsePrice(price), amount, product: selectedProduct });
       setPrice("");
       setAmount(1);
     }

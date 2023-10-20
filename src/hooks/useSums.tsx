@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Sum } from "../types/sums.models";
-import { showDate } from "../utils/dataUtils";
+import { showDate, parsePrice } from "../utils/dataUtils";
 import useSumsContext from "./useSumsContext";
 
 const useSums = (): SumsHook => {
@@ -53,12 +53,12 @@ const useSums = (): SumsHook => {
 
 export default useSums;
 
-const total = (sums: Sum[]): number => {
+const total = (sums: Sum[]): string => {
   let resultado = 0;
   sums.forEach((sum) => {
-    resultado = resultado + parseInt(sum.price) * sum.amount;
+    resultado = resultado + Number(sum.price) * sum.amount;
   });
-  return resultado;
+  return parsePrice(resultado);
 };
 
 interface SumsHook {

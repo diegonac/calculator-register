@@ -12,7 +12,7 @@ export type Order = {
   client: string;
   saleCondition: string;
   sums: [] | Sums;
-  total: number;
+  total: string | number;
 };
 
 export interface DropdownMsg {

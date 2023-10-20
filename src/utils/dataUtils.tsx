@@ -1,4 +1,9 @@
-import { CATEGORIES, DropdownMsg, DropdownOptions, Sums } from "../types/sums.models";
+import {
+  CATEGORIES,
+  DropdownMsg,
+  DropdownOptions,
+  Sums,
+} from "../types/sums.models";
 
 export const capitalizeString = (str: string): string => {
   return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
@@ -6,6 +11,16 @@ export const capitalizeString = (str: string): string => {
 
 export const capitalizeWords = (str: string): string => {
   return str.toLowerCase().replace(/\b\w/g, (match) => match.toUpperCase());
+};
+
+export const parsePrice = (num: string | number): string => {
+  const parsedNumber = Number(num);
+
+  if (Number.isInteger(parsedNumber)) {
+    return parsedNumber.toString();
+  }
+
+  return parsedNumber.toFixed(2);
 };
 
 export const showDate = (): string => {
@@ -63,7 +78,9 @@ export const prepareBody = (sums: Sums) => {
   const amounts = sums.map((sum) => `${sum.amount}`);
   const prices = sums.map((sum) => `${sum.price}`);
   const products = sums.map((sum) => `${sum.product}`);
-  const subTotal = sums.map((sum) => `${parseInt(sum.price) * sum.amount}`);
+  const subTotal = sums.map(
+    (sum) => `${parsePrice(Number(sum.price) * sum.amount)}`
+  );
   amounts.unshift("UNIDADES");
   prices.unshift("PRECIO");
   products.unshift("PRODUCTOS");

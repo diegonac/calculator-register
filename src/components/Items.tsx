@@ -3,6 +3,7 @@ import { AiOutlineMinusCircle, AiOutlinePlusCircle } from "react-icons/ai";
 import { BsTrash3 } from "react-icons/bs";
 import { Sum } from "../types/sums.models";
 import useSums from "../hooks/useSums";
+import { parsePrice } from "../utils/dataUtils";
 
 interface ItemsProps {
   sum: Sum;
@@ -48,7 +49,7 @@ const Items: React.FC<ItemsProps> = ({ sum }) => {
         </button>
       </div>
 
-      <p>{parseInt(sum.price) * sum.amount}</p>
+      <p>{parsePrice(Number(sum.price) * sum.amount)}</p>
 
       <button
         title="Eliminar suma"
