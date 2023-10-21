@@ -29,7 +29,7 @@ const Items: React.FC<ItemsProps> = ({ sum }) => {
       <p className="text-center">{sum.product}</p>
       <p>{sum.price}</p>
 
-      <div className="flex justify-center gap-2 w-full">
+      <div className="flex justify-center items-center gap-2 w-full">
         <button
           title="Eliminar unidad"
           type="button"
