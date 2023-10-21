@@ -37,6 +37,7 @@ const Form: React.FC = () => {
   };
 
   const handlePriceChange = (event: ChangeEvent<HTMLInputElement>) => {
+    if (event.target.value.includes("-")) return setPrice("");
     setPrice(event.target.value);
   };
 
